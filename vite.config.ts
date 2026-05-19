@@ -31,16 +31,7 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-<<<<<<< HEAD
-  assetsInclude: ["**/*.svg", "**/*.csv"],
-<<<<<<< HEAD
-})
-=======
-})
->>>>>>> 116cbf5 (Fix GitHub Pages deployment)
-=======
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
 })
->>>>>>> 9a29767 (Prepare GitHub Pages deploy)
