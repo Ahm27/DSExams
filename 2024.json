@@ -1,0 +1,313 @@
+{
+  "year": 2024,
+  "title": "Data Structures 2024 Exam",
+  "difficulty": "hard",
+  "questions": [
+    {
+      "id": 1,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "The five items: A, B, C, D, and E are pushed in a stack, one after another starting from A.\nThe stack is popped four times and each element is inserted in a queue.\nThe two elements are deleted from the queue and pushed back on the stack.\nNow one item is popped from the stack. The popped item is:",
+      "options": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "correctAnswer": "D"
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Queues serve major role in:",
+      "options": [
+        "Simulating recursion",
+        "Simulating Linked Lists",
+        "Simulating scheduling",
+        "None of the above"
+      ],
+      "correctAnswer": "Simulating scheduling"
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "A double ended queue can be used to implement _____",
+      "options": [
+        "Stacks",
+        "Queues",
+        "Both A and B",
+        "Neither"
+      ],
+      "correctAnswer": "Both A and B"
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "The operations that can be done in a circular queue is/are:",
+      "options": [
+        "Insert at back",
+        "Delete from front",
+        "Display front value",
+        "All of the above"
+      ],
+      "correctAnswer": "All of the above"
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Given a singly linked list. Let Q be the pointer to a node x in the middle of the list. What is the worst-case time complexity to delete the node x from the list?",
+      "options": [
+        "O(n)",
+        "O(log(n))",
+        "O(n log(n))",
+        "O(1)"
+      ],
+      "correctAnswer": "O(1)"
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "What is the complexity of inserting n elements into an empty linked list, if the linked list needs to be maintained in sorted order?",
+      "options": [
+        "O(n)",
+        "O(log(n))",
+        "O(n²)",
+        "O(1)"
+      ],
+      "correctAnswer": "O(n²)"
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Insertion of an element at the middle of a singly linked list requires the modification of how many pointers?",
+      "options": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "2"
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Which type of linked list stores the address of the head node in the next pointer of the last node?",
+      "options": [
+        "Singly Linked List",
+        "Doubly Linked List",
+        "Hashed List",
+        "Circular Linked List"
+      ],
+      "correctAnswer": "Circular Linked List"
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "How many distinct BSTs can be constructed from 3 distinct keys?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "9"
+      ],
+      "correctAnswer": "5"
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "What are the worst case and average case complexities of a binary search tree?",
+      "options": [
+        "O(n), O(n)",
+        "O(log(n)), O(log(n))",
+        "O(log(n)), O(n)",
+        "O(n), O(log(n))"
+      ],
+      "correctAnswer": "O(n), O(log(n))"
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Suppose the numbers 7, 5, 1, 8, 3, 6, 0, 9, 4, 2 are inserted in that order into an initially empty binary search tree. What is the in-order traversal sequence of the resultant tree?",
+      "options": [
+        "7 5 1 0 3 2 4 6 8 9",
+        "0 2 4 3 1 6 5 9 8 7",
+        "0 1 2 3 4 5 6 7 8 9",
+        "9 8 6 4 2 3 0 1 5 7"
+      ],
+      "correctAnswer": "0 1 2 3 4 5 6 7 8 9"
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Given a hash table T with 25 slots that stores 2000 elements, the load factor for T is:",
+      "options": [
+        "80",
+        "0.125",
+        "8000",
+        "1.25"
+      ],
+      "correctAnswer": "80"
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Consider a hash table of size seven, with starting index zero, and a hash function (x+3) mod 4. Assuming the hash table is initially empty, which of the following is the contents of the table when the sequence 1, 3, 8, 10 is inserted into the table using linear probing? Here “_” denotes an empty location in the table.",
+      "options": [
+        "1,10,3,8,_ ,_ ,_",
+        "1,3,8,10,_ ,_ ,_",
+        "1,_,3,_,8,_,10",
+        "3,10,_,8,_,1,_"
+      ],
+      "correctAnswer": "1,10,3,8,_ ,_ ,_"
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "A graph having an edge from each vertex to every other vertex is called _____",
+      "options": [
+        "Strongly Connected",
+        "Weakly Connected",
+        "Complete",
+        "None of the above"
+      ],
+      "correctAnswer": "Complete"
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "The number of elements in the adjacency matrix of a graph having 7 vertices is _____",
+      "options": [
+        "7",
+        "14",
+        "36",
+        "49"
+      ],
+      "correctAnswer": "49"
+    },
+    {
+      "id": 16,
+      "type": "drawDiagram",
+      "section": "2nd Question - A",
+      "diagramType": "stack",
+      "question": "For the following code snippet, represent in drawing the result of the given instructions on the used STL.",
+      "code": "stack<int> x;\nx.push(10);\nx.push(11);\nx.push(12);\nx.push(13);\nx.pop();\nx.push(x.top());",
+      "initialNodes": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "answerImage": "/answers/2024/q16-stack.png",
+      "selfReview": true
+    },
+    {
+      "id": 17,
+      "type": "drawDiagram",
+      "section": "2nd Question - B",
+      "diagramType": "queueVector",
+      "question": "For the following code snippet, represent in drawing the result of the given instructions on the used STL.",
+      "code": "queue<int> x;\nvector<int> y;\n\nx.push(50);\nx.push(60);\n\ny.push_back(70);\ny.push_back(80);\n\ny.push_back(x.empty());",
+      "initialNodes": [
+        "50",
+        "60",
+        "70",
+        "80"
+      ],
+      "answerImage": "/answers/2024/q17-queue-vector.png",
+      "selfReview": true
+    },
+    {
+      "id": 18,
+      "type": "drawDiagram",
+      "section": "2nd Question - C",
+      "diagramType": "linkedList",
+      "question": "For the following code snippet, represent in drawing the result of the given instructions on the used LinkedList.",
+      "code": "LinkedList<int> L;\n\nL.Append(80);\nL.Append(70);\nL.Append(60);\nL.Append(50);\n\nL.DeleteAt(3);\n\nL.InsertAt(1, L.At(1));",
+      "initialNodes": [
+        "80",
+        "70",
+        "60",
+        "50"
+      ],
+      "answerImage": "/answers/2024/q18-linked-list.png",
+      "selfReview": true
+    },
+    {
+      "id": 19,
+      "type": "drawDiagram",
+      "section": "2nd Question - D",
+      "diagramType": "map",
+      "question": "For the following code snippet, represent in drawing the result of the given instructions on the used STL.",
+      "code": "map<char,int> x;\n\nx.insert(make_pair('b',1));\nx.insert(make_pair('a',2));\nx.insert(make_pair('x',3));\nx.insert(make_pair('z',4));\nx.insert(make_pair('d',5));\n\nx['b']=5;\nx.erase('z');",
+      "initialNodes": [
+        "b:1",
+        "a:2",
+        "x:3",
+        "z:4",
+        "d:5"
+      ],
+      "answerImage": "/answers/2024/q19-map.png",
+      "selfReview": true
+    },
+    {
+      "id": 20,
+      "type": "compoundQuestion",
+      "section": "3rd Question",
+      "question": "Write a template C++ class to implement a Binary Search Tree (BST) class. Your implementation should include the Node class with its constructor and the BST class with its constructor.",
+      "modelAnswer": "template <class T>\nclass Node {\npublic:\n    T data;\n    Node<T>* left;\n    Node<T>* right;\n\n    Node(T value) {\n        data = value;\n        left = nullptr;\n        right = nullptr;\n    }\n};\n\ntemplate <class T>\nclass BST {\nprivate:\n    Node<T>* root;\n\n    Node<T>* Insert(Node<T>* node, T value) {\n        if (node == nullptr) {\n            return new Node<T>(value);\n        }\n\n        if (value < node->data) {\n            node->left = Insert(node->left, value);\n        } else {\n            node->right = Insert(node->right, value);\n        }\n\n        return node;\n    }\n\npublic:\n    BST() {\n        root = nullptr;\n    }\n\n    void Insert(T value) {\n        root = Insert(root, value);\n    }\n\n    void CreateTree(T arr[], int n) {\n        for (int i = 0; i < n; i++) {\n            Insert(arr[i]);\n        }\n    }\n\n    T Max() {\n        Node<T>* current = root;\n        while (current->right != nullptr) {\n            current = current->right;\n        }\n        return current->data;\n    }\n};",
+      "subQuestions": [
+        {
+          "label": "i",
+          "prompt": "Implement Insert(), which inserts a value into the BST."
+        },
+        {
+          "label": "ii",
+          "prompt": "Implement CreateTree(arr)."
+        },
+        {
+          "label": "iii",
+          "prompt": "Implement Max(), which returns the maximum value in the tree."
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "type": "compoundQuestion",
+      "section": "4th Question",
+      "question": "A marketing agency wants a program to manage clients and influencers. Each client requests N influencers to promote a campaign, and each influencer has an ID, name, and Instagram ID.",
+      "modelAnswer": "#include <iostream>\n#include <map>\n#include <vector>\n#include <string>\nusing namespace std;\n\nstruct Influencer {\n    int id;\n    string name;\n    string instagramId;\n};\n\nmap<string, vector<Influencer>> campaigns;\n\nvoid create_campaign(const string& clientName, const vector<Influencer>& influencers) {\n    campaigns[clientName] = influencers;\n}\n\nvoid print_influencers_data() {\n    for (const auto& campaign : campaigns) {\n        cout << \"Client: \" << campaign.first << endl;\n        for (const auto& influencer : campaign.second) {\n            cout << influencer.id << \" - \"\n                 << influencer.name << \" - \"\n                 << influencer.instagramId << endl;\n        }\n    }\n}\n\nvoid delete_influencers_from_campaign(const string& clientName, int influencerId) {\n    vector<Influencer>& list = campaigns[clientName];\n\n    for (auto it = list.begin(); it != list.end(); ) {\n        if (it->id == influencerId) {\n            it = list.erase(it);\n        } else {\n            ++it;\n        }\n    }\n}",
+      "subQuestions": [
+        {
+          "label": "i",
+          "prompt": "Represent the required data using suitable STL(s)."
+        },
+        {
+          "label": "ii",
+          "prompt": "Implement create_campaign(...)."
+        },
+        {
+          "label": "iii",
+          "prompt": "Implement print_influencers_data()."
+        },
+        {
+          "label": "iv",
+          "prompt": "Implement delete_influencers_from_campaign(...)."
+        }
+      ]
+    }
+  ]
+}

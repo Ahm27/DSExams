@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#050812"/>
+  <rect x="70" y="70" width="1060" height="760" rx="28" fill="#0f1629" stroke="#00ffff" stroke-width="4"/>
+  <text x="120" y="145" fill="#00ffff" font-size="38" font-family="monospace">2023 Graph / Dijkstra Answer Summary</text>
+  <text x="120" y="205" fill="#94a3b8" font-size="24" font-family="monospace">i. The graph is directed, so it is not undirected.</text>
+  <text x="120" y="242" fill="#94a3b8" font-size="24" font-family="monospace">ii. Number of directed edges = 12</text>
+  <text x="120" y="279" fill="#94a3b8" font-size="24" font-family="monospace">iii. Number of vertices = 7: Home, A, B, C, D, E, Office</text>
+
+  <rect x="120" y="340" width="960" height="430" rx="20" fill="none" stroke="#a855f7" stroke-width="3"/>
+  <text x="180" y="395" fill="#a855f7" font-size="28" font-family="monospace">Vertex</text>
+  <text x="470" y="395" fill="#a855f7" font-size="28" font-family="monospace">Cost</text>
+  <text x="620" y="395" fill="#a855f7" font-size="28" font-family="monospace">Shortest Path from Home</text>
+
+  <g fill="#00ffff" font-size="26" font-family="monospace">
+    <text x="180" y="455">Home</text><text x="470" y="455">0</text><text x="620" y="455">Home</text>
+    <text x="180" y="510">A</text><text x="470" y="510">5</text><text x="620" y="510">Home -&gt; A</text>
+    <text x="180" y="565">D</text><text x="470" y="565">8</text><text x="620" y="565">Home -&gt; D</text>
+    <text x="180" y="620">C</text><text x="470" y="620">8</text><text x="620" y="620">Home -&gt; A -&gt; C</text>
+    <text x="180" y="675">E</text><text x="470" y="675">10</text><text x="620" y="675">Home -&gt; A -&gt; C -&gt; E</text>
+    <text x="180" y="730">B</text><text x="470" y="730">14</text><text x="620" y="730">Home -&gt; A -&gt; B</text>
+    <text x="180" y="785">Office</text><text x="470" y="785">14</text><text x="620" y="785">Home -&gt; A -&gt; C -&gt; E -&gt; Office</text>
+  </g>
+
+  <g stroke="#a855f7" stroke-width="2" opacity="0.45">
+    <line x1="140" y1="415" x2="1060" y2="415"/>
+    <line x1="140" y1="470" x2="1060" y2="470"/>
+    <line x1="140" y1="525" x2="1060" y2="525"/>
+    <line x1="140" y1="580" x2="1060" y2="580"/>
+    <line x1="140" y1="635" x2="1060" y2="635"/>
+    <line x1="140" y1="690" x2="1060" y2="690"/>
+    <line x1="140" y1="745" x2="1060" y2="745"/>
+    <line x1="400" y1="360" x2="400" y2="810"/>
+    <line x1="560" y1="360" x2="560" y2="810"/>
+  </g>
+</svg>

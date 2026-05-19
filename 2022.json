@@ -1,0 +1,269 @@
+{
+  "year": 2022,
+  "title": "Data Structures Final Examination 2022",
+  "difficulty": "hard",
+  "questions": [
+    {
+      "id": 1,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "How many stacks are required for the evaluation of a postfix expression?",
+      "options": [
+        "One",
+        "Two",
+        "Three",
+        "Four"
+      ],
+      "correctAnswer": "One"
+    },
+    {
+      "id": 2,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "The operation pop returns the top element of the stack without removing it.",
+      "correctAnswer": false
+    },
+    {
+      "id": 3,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "The item added to the stack last will be the item removed last.",
+      "correctAnswer": false
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "In the linked-list version of the Queue class, which operations require linear time O(n) for their worst-case behavior (assuming you have pointers to both the front and the back of the queue)?",
+      "options": [
+        "Front()",
+        "enqueue()",
+        "empty()",
+        "None"
+      ],
+      "correctAnswer": "None"
+    },
+    {
+      "id": 5,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "What is the main purpose of using a circular queue?",
+      "options": [
+        "Avoid wasting memory",
+        "Access elements according to priority",
+        "Ensure the FIFO principle",
+        "None"
+      ],
+      "correctAnswer": "Avoid wasting memory"
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "What is the time complexity of inserting an element at the end of a singly linked list if you have only a head pointer?",
+      "options": [
+        "O(1)",
+        "O(n)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "correctAnswer": "O(n)"
+    },
+    {
+      "id": 7,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "Random access is not allowed in a typical implementation of Linked Lists.",
+      "correctAnswer": true
+    },
+    {
+      "id": 8,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "Operations such as search, insert and delete requires a linked list to be sorted.",
+      "correctAnswer": false
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Minimum number of fields in each node of a doubly linked list is",
+      "options": [
+        "2",
+        "3",
+        "4",
+        "None"
+      ],
+      "correctAnswer": "3"
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "If a binary search tree is not balanced, how long will it take (worst case) to find an element in it?",
+      "options": [
+        "O(log n)",
+        "O(n)",
+        "Undefined",
+        "O(1)"
+      ],
+      "correctAnswer": "O(n)"
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "If several elements are competing for the same location in the hash table, ......... occurs",
+      "options": [
+        "Collision",
+        "Replication",
+        "Duplication",
+        "Nothing"
+      ],
+      "correctAnswer": "Collision"
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Assuming no collisions, finding an element in a hash table takes:",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(1)",
+        "O(n log n)"
+      ],
+      "correctAnswer": "O(1)"
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Which of the following STLs are used to implement a BST?",
+      "options": [
+        "Set",
+        "Map",
+        "A and B",
+        "Neither A nor B"
+      ],
+      "correctAnswer": "A and B"
+    },
+    {
+      "id": 14,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "AVL trees are linear data structures.",
+      "correctAnswer": false
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Which of the following statements is true about AVL Trees?",
+      "options": [
+        "The difference between the heights of left and right nodes cannot be more than 1",
+        "The height of an AVL Tree always remains of the order of O(log n)",
+        "AVL Trees are a type of self-balancing Binary Search Trees",
+        "All of the Above"
+      ],
+      "correctAnswer": "All of the Above"
+    },
+    {
+      "id": 16,
+      "type": "compoundQuestion",
+      "section": "2nd Question - A",
+      "question": "For each of the following situations, select the appropriate or best data structure and justify your selection.",
+      "modelAnswer": "i. Queue: customers who come first are served first, so FIFO fits.\nii. Double Linked List: browser navigation needs previous and next movement.\niii. Stack: undo-redo reverses operations, so LIFO fits.\niv. Binary Search Tree: sorted items can be searched efficiently.",
+      "subQuestions": [
+        {
+          "label": "i",
+          "prompt": "Your structure will be used in a shop system where customers who come first will order first."
+        },
+        {
+          "label": "ii",
+          "prompt": "Your structure will be used in a web browser where users need to access previous and next URLs by pressing back and next."
+        },
+        {
+          "label": "iii",
+          "prompt": "Your structure will be used by an application that remembers operations in reverse order to perform undo and redo functionality."
+        },
+        {
+          "label": "iv",
+          "prompt": "Your structure will be used by an address book where items are already sorted and optimal search is required."
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "compoundQuestion",
+      "section": "2nd Question - B",
+      "question": "Given the figure below, answer the following questions.\n\n50\n/ \\\n17 76\n/ \\ /\n9 23 54\n\\ \\ \\\n14 19 72\n/ /\n12 67",
+      "answerImage": "/answers/2022/q17-tree-analysis.svg",
+      "modelAnswer": "i. No, it is not balanced because the subtree rooted at 9 is not height-balanced.\nii. No, it is not a Binary Search Tree because node 19 appears in the right subtree of 23 while 19 < 23.\niii. Post-order traversal: 12, 14, 9, 19, 23, 17, 67, 72, 54, 76, 50.\niv. There is no unique BST-style replacement root here because the given tree is not a valid BST. If BST deletion rules were applied hypothetically, the inorder successor of 50 would be 54.",
+      "subQuestions": [
+        {
+          "label": "i",
+          "prompt": "Is this a balanced tree?"
+        },
+        {
+          "label": "ii",
+          "prompt": "Is this a Binary Search Tree?"
+        },
+        {
+          "label": "iii",
+          "prompt": "Write the post-order traversal of this tree."
+        },
+        {
+          "label": "iv",
+          "prompt": "If the root 50 is deleted, what will be the new root?"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "compoundQuestion",
+      "section": "3rd Question",
+      "question": "Write a C++ template class for a double-ended queue (Deque) implemented as a doubly linked list.",
+      "modelAnswer": "template <class T>\nclass Node {\npublic:\n    T data;\n    Node<T>* next;\n    Node<T>* prev;\n\n    Node(T value) {\n        data = value;\n        next = nullptr;\n        prev = nullptr;\n    }\n};\n\ntemplate <class T>\nclass Deque {\nprivate:\n    Node<T>* front;\n    Node<T>* back;\n\npublic:\n    Deque() {\n        front = nullptr;\n        back = nullptr;\n    }\n\n    void pushFront(T val) {\n        Node<T>* node = new Node<T>(val);\n        if (front == nullptr) {\n            front = back = node;\n            return;\n        }\n\n        node->next = front;\n        front->prev = node;\n        front = node;\n    }\n\n    void popBack() {\n        if (back == nullptr) {\n            return;\n        }\n\n        Node<T>* temp = back;\n        if (front == back) {\n            front = back = nullptr;\n        } else {\n            back = back->prev;\n            back->next = nullptr;\n        }\n        delete temp;\n    }\n\n    void moveToFront(int pos) {\n        if (front == nullptr || pos <= 0) {\n            return;\n        }\n\n        Node<T>* current = front;\n        for (int i = 0; current != nullptr && i < pos; i++) {\n            current = current->next;\n        }\n\n        if (current == nullptr || current == front) {\n            return;\n        }\n\n        if (current == back) {\n            back = current->prev;\n        }\n\n        if (current->prev != nullptr) {\n            current->prev->next = current->next;\n        }\n        if (current->next != nullptr) {\n            current->next->prev = current->prev;\n        }\n\n        current->prev = nullptr;\n        current->next = front;\n        front->prev = current;\n        front = current;\n    }\n};",
+      "subQuestions": [
+        {
+          "label": "a",
+          "prompt": "Include the Node class with its constructor and the Deque class with its constructor."
+        },
+        {
+          "label": "b",
+          "prompt": "Implement pushFront(val), which adds a value val to the front of the queue."
+        },
+        {
+          "label": "c",
+          "prompt": "Implement popBack(), which removes the value at the back of the queue."
+        },
+        {
+          "label": "d",
+          "prompt": "Implement moveToFront(pos), which moves the value at position pos to the front of the queue."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "compoundQuestion",
+      "section": "4th Question",
+      "question": "An Amazon-like company continuously receives a stream of transactions. Each transaction means that a person bought one unit of a product identified by its unique ID. At any point, the system should print the sales count of a product and the top five sold products.",
+      "modelAnswer": "#include <iostream>\n#include <unordered_map>\n#include <vector>\n#include <algorithm>\n#include <string>\nusing namespace std;\n\nunordered_map<int, int> productSales;\n\nvoid add_transaction(string customer_name, int product_id) {\n    productSales[product_id]++;\n}\n\nint get_product_sales_count(int product_id) {\n    if (productSales.find(product_id) == productSales.end()) {\n        return 0;\n    }\n    return productSales[product_id];\n}\n\nvoid print_top_products_ids() {\n    vector<pair<int, int>> items;\n\n    for (auto item : productSales) {\n        items.push_back({item.first, item.second});\n    }\n\n    sort(items.begin(), items.end(), [](const pair<int, int>& a, const pair<int, int>& b) {\n        if (a.second == b.second) {\n            return a.first < b.first;\n        }\n        return a.second > b.second;\n    });\n\n    int limit = min(5, (int)items.size());\n    for (int i = 0; i < limit; i++) {\n        cout << items[i].first << endl;\n    }\n}",
+      "subQuestions": [
+        {
+          "label": "i",
+          "prompt": "Implement add_transaction(string customer_name, int product_id)."
+        },
+        {
+          "label": "ii",
+          "prompt": "Implement get_product_sales_count(int product_id)."
+        },
+        {
+          "label": "iii",
+          "prompt": "Implement print_top_products_ids()."
+        }
+      ]
+    }
+  ]
+}

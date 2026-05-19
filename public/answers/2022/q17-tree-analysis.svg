@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#050812"/>
+  <rect x="70" y="70" width="1060" height="760" rx="28" fill="#0f1629" stroke="#a855f7" stroke-width="4"/>
+  <text x="120" y="145" fill="#a855f7" font-size="38" font-family="monospace">2022 Tree Analysis Answer</text>
+  <text x="120" y="205" fill="#94a3b8" font-size="24" font-family="monospace">i. Not balanced</text>
+  <text x="120" y="242" fill="#94a3b8" font-size="24" font-family="monospace">ii. Not a BST: 19 is in the right subtree of 23, but 19 &lt; 23</text>
+  <text x="120" y="279" fill="#94a3b8" font-size="24" font-family="monospace">iii. Post-order: 12, 14, 9, 19, 23, 17, 67, 72, 54, 76, 50</text>
+  <text x="120" y="316" fill="#94a3b8" font-size="24" font-family="monospace">iv. No unique BST deletion answer because the tree is not a valid BST</text>
+  <text x="120" y="353" fill="#94a3b8" font-size="24" font-family="monospace">If BST deletion rules were applied hypothetically, the successor of 50 is 54</text>
+
+  <rect x="130" y="440" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="310" y="540" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="310" y="340" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="490" y="640" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="490" y="440" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="670" y="340" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="850" y="540" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="850" y="640" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="850" y="440" width="120" height="72" rx="16" fill="#1e293b" stroke="#ef4444" stroke-width="4"/>
+  <rect x="1030" y="540" width="120" height="72" rx="16" fill="#1e293b" stroke="#00ffff" stroke-width="3"/>
+  <rect x="1030" y="340" width="120" height="72" rx="16" fill="#1e293b" stroke="#10b981" stroke-width="4"/>
+
+  <text x="190" y="486" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">50</text>
+  <text x="370" y="586" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">17</text>
+  <text x="370" y="386" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">76</text>
+  <text x="550" y="686" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">9</text>
+  <text x="550" y="486" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">23</text>
+  <text x="730" y="386" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">54</text>
+  <text x="910" y="586" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">14</text>
+  <text x="910" y="686" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">12</text>
+  <text x="910" y="486" fill="#ef4444" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">19</text>
+  <text x="1090" y="586" fill="#00ffff" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">72</text>
+  <text x="1090" y="386" fill="#10b981" font-size="30" font-family="Orbitron, monospace" text-anchor="middle">54*</text>
+
+  <path d="M250 476 L310 564" stroke="#a855f7" stroke-width="5"/>
+  <path d="M250 476 L310 388" stroke="#a855f7" stroke-width="5"/>
+  <path d="M430 574 L490 676" stroke="#a855f7" stroke-width="5"/>
+  <path d="M430 574 L490 476" stroke="#a855f7" stroke-width="5"/>
+  <path d="M790 376 L850 476" stroke="#a855f7" stroke-width="5"/>
+  <path d="M790 376 L1030 574" stroke="#a855f7" stroke-width="5"/>
+  <path d="M610 676 L850 586" stroke="#a855f7" stroke-width="5"/>
+  <path d="M970 574 L1030 376" stroke="#a855f7" stroke-width="5"/>
+  <path d="M970 676 L850 598" stroke="#a855f7" stroke-width="5"/>
+
+  <text x="830" y="760" fill="#ef4444" font-size="22" font-family="monospace">19 violates BST ordering under node 23</text>
+  <text x="830" y="795" fill="#10b981" font-size="22" font-family="monospace">54 would be the successor of 50 only in a valid BST</text>
+</svg>

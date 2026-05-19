@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#050812"/>
+  <rect x="70" y="70" width="1060" height="760" rx="28" fill="#0f1629" stroke="#10b981" stroke-width="4"/>
+  <text x="120" y="150" fill="#10b981" font-size="40" font-family="monospace">Map Final State</text>
+  <text x="120" y="205" fill="#94a3b8" font-size="24" font-family="monospace">sorted by key after update and erase</text>
+  <rect x="180" y="300" width="180" height="110" rx="20" fill="#1e293b" stroke="#10b981" stroke-width="3"/>
+  <rect x="390" y="300" width="180" height="110" rx="20" fill="#1e293b" stroke="#10b981" stroke-width="3"/>
+  <rect x="600" y="300" width="180" height="110" rx="20" fill="#1e293b" stroke="#10b981" stroke-width="3"/>
+  <rect x="810" y="300" width="180" height="110" rx="20" fill="#1e293b" stroke="#10b981" stroke-width="3"/>
+  <text x="270" y="367" fill="#10b981" font-size="34" font-family="Orbitron, monospace" text-anchor="middle">a : 2</text>
+  <text x="480" y="367" fill="#10b981" font-size="34" font-family="Orbitron, monospace" text-anchor="middle">b : 5</text>
+  <text x="690" y="367" fill="#10b981" font-size="34" font-family="Orbitron, monospace" text-anchor="middle">d : 5</text>
+  <text x="900" y="367" fill="#10b981" font-size="34" font-family="Orbitron, monospace" text-anchor="middle">x : 3</text>
+</svg>

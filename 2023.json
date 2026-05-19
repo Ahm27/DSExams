@@ -1,0 +1,270 @@
+{
+  "year": 2023,
+  "title": "Data Structures 2022-2023 Final Exam",
+  "difficulty": "hard",
+  "questions": [
+    {
+      "id": 1,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Consider a double linked list of n elements. What is the time taken to insert an element if you already have a pointer to the element that you need to insert it after?",
+      "options": [
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n log n)"
+      ],
+      "correctAnswer": "O(1)"
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "For a queue implemented with a linked list, keeping track of a front pointer and a back pointer. Which of these pointers will change during an insertion into a NONEMPTY queue?",
+      "options": [
+        "Neither change",
+        "Only front changes",
+        "Only back changes",
+        "Both change"
+      ],
+      "correctAnswer": "Only back changes"
+    },
+    {
+      "id": 3,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "An Array List is a container of objects of mixed data types.",
+      "correctAnswer": false
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Suppose you are implementing a singly linked list with only a head pointer. Which of the following operations can be implemented in O(N) time?",
+      "options": [
+        "Insertion at the end of the linked list",
+        "Insertion at the first node of the linked list",
+        "Deletion of the front node of the linked list",
+        "None of the mentioned"
+      ],
+      "correctAnswer": "Insertion at the end of the linked list"
+    },
+    {
+      "id": 5,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "In Array Lists, inserting and deleting may require shifting elements.",
+      "correctAnswer": true
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "The complexity of searching for a particular element in a Singly Linked List is . . .",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(1)",
+        "None of the above"
+      ],
+      "correctAnswer": "O(n)"
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "The data structure required for Depth First Search on a graph is . . .",
+      "options": [
+        "Queue",
+        "Array",
+        "Stack",
+        "Tree"
+      ],
+      "correctAnswer": "Stack"
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "What does a vector represent?",
+      "options": [
+        "Array List",
+        "Stack",
+        "Queue",
+        "Linked List"
+      ],
+      "correctAnswer": "Array List"
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Any value in a singly linked list can be deleted, . . .",
+      "options": [
+        "without traversing the list",
+        "by traversing the list from the head",
+        "by traversing the list from the tail",
+        "All of the above"
+      ],
+      "correctAnswer": "by traversing the list from the head"
+    },
+    {
+      "id": 10,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "The map STL implements the hash table data structure.",
+      "correctAnswer": false
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "The maximum number of comparisons for a search operation in a binary search tree is:",
+      "options": [
+        "length of the tree",
+        "height of the tree",
+        "number of nodes in the tree",
+        "number of leaf nodes in the tree"
+      ],
+      "correctAnswer": "height of the tree"
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "One way to reduce clustering in a hash table is:",
+      "options": [
+        "Linear probing",
+        "Rehashing",
+        "Hashing",
+        "Double hashing"
+      ],
+      "correctAnswer": "Double hashing"
+    },
+    {
+      "id": 13,
+      "type": "trueFalse",
+      "section": "1st Question",
+      "question": "The run-time of linear probing is independent of the hash table’s load factor.",
+      "correctAnswer": false
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "Given a hash function H(x) = (x + 4) % 100, the hash value of 100 is:",
+      "options": [
+        "unknown",
+        "4",
+        "100",
+        "104"
+      ],
+      "correctAnswer": "4"
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "section": "1st Question",
+      "question": "How many 1s are there in the adjacency matrix of an undirected graph with 6 edges?",
+      "options": [
+        "0",
+        "1",
+        "6",
+        "12"
+      ],
+      "correctAnswer": "12"
+    },
+    {
+      "id": 16,
+      "type": "matching",
+      "section": "2nd Question - A",
+      "question": "For each of the following situations, select the appropriate/best data structure from the list below (you shouldn’t repeat your choice):\nStack, Queue, Linked List, Double Linked List, Binary Search Tree, Hash Table, Graph\n\ni. Your structure will be used to build a transportation/navigation system.\nii. Your structure will be used by an application to create song playlists.\niii. Your structure will be used in a card game where you have a pile of cards and you can only deal with the top card.\niv. Your structure will be used to manage cafeteria orders.",
+      "pairs": [
+        {
+          "left": "transportation/navigation system",
+          "right": "Graph"
+        },
+        {
+          "left": "song playlists",
+          "right": "Linked List"
+        },
+        {
+          "left": "pile of cards and you can only deal with the top card",
+          "right": "Stack"
+        },
+        {
+          "left": "cafeteria orders",
+          "right": "Queue"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "type": "compoundQuestion",
+      "section": "2nd Question - B",
+      "question": "Given the figure below, answer the following questions.",
+      "modelAnswer": "i. No, this is a directed graph because the edges have arrows.\nii. Number of directed edges = 12.\niii. Number of vertices = 7: Home, A, B, C, D, E, Office.\niv. Shortest paths from Home:\nHome: 0, Home\nA: 5, Home -> A\nD: 8, Home -> D\nC: 8, Home -> A -> C\nE: 10, Home -> A -> C -> E\nB: 14, Home -> A -> B\nOffice: 14, Home -> A -> C -> E -> Office",
+      "answerImage": "/answers/2023/q17-dijkstra.svg",
+      "subQuestions": [
+        {
+          "label": "i",
+          "prompt": "Is this an undirected graph?"
+        },
+        {
+          "label": "ii",
+          "prompt": "What is the number of edges?"
+        },
+        {
+          "label": "iii",
+          "prompt": "What is the number of vertices?"
+        },
+        {
+          "label": "iv",
+          "prompt": "Apply Dijkstra’s algorithm starting at Home. Write the shortest-path cost and the path itself for each vertex."
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "type": "compoundQuestion",
+      "section": "3rd Question",
+      "question": "Write a template C++ class to implement a modified Map class. A Map is a binary search tree where each node contains both a key and a value, and BST sorting is based on the key. For this modified map, the key is char and the value is an array containing multiple entries.",
+      "modelAnswer": "#include <iostream>\n#include <vector>\nusing namespace std;\n\ntemplate <class V>\nclass Node {\npublic:\n    char key;\n    vector<V> values;\n    Node<V>* left;\n    Node<V>* right;\n\n    Node(char k, V v) {\n        key = k;\n        values.push_back(v);\n        left = nullptr;\n        right = nullptr;\n    }\n};\n\ntemplate <class V>\nclass ModifiedMap {\nprivate:\n    Node<V>* root;\n\n    Node<V>* insert(Node<V>* node, char k, V v) {\n        if (node == nullptr) return new Node<V>(k, v);\n\n        if (k < node->key) node->left = insert(node->left, k, v);\n        else if (k > node->key) node->right = insert(node->right, k, v);\n        else node->values.push_back(v);\n\n        return node;\n    }\n\n    Node<V>* findNode(Node<V>* node, char k) {\n        if (node == nullptr || node->key == k) return node;\n        if (k < node->key) return findNode(node->left, k);\n        return findNode(node->right, k);\n    }\n\npublic:\n    ModifiedMap() { root = nullptr; }\n\n    void insert(char k, V v) { root = insert(root, k, v); }\n\n    void find(char k) {\n        Node<V>* node = findNode(root, k);\n        if (node == nullptr) {\n            cout << \"Key not found\" << endl;\n            return;\n        }\n        for (V value : node->values) cout << value << \" \";\n        cout << endl;\n    }\n};",
+      "subQuestions": [
+        {
+          "label": "a",
+          "prompt": "Implement insert(k, v): add a node with key k and value v to the tree, or append the value to the associated array if the key already exists."
+        },
+        {
+          "label": "b",
+          "prompt": "Implement find(k): search for the node with key k and display all associated values."
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "type": "compoundQuestion",
+      "section": "4th Question",
+      "question": "A small company wants to build an automated helpdesk to handle customer requests. A request has an importance level (high = 3, medium = 2, low = 1), and employees should process the highest-importance requests first. Each request has an ID and a status represented as a char.",
+      "modelAnswer": "#include <iostream>\n#include <queue>\n#include <map>\n#include <string>\nusing namespace std;\n\nstruct Request {\n    int id;\n    string description;\n    int importance;\n    char status;\n};\n\nstruct CompareRequest {\n    bool operator()(const Request& a, const Request& b) {\n        return a.importance < b.importance;\n    }\n};\n\npriority_queue<Request, vector<Request>, CompareRequest> requestsQueue;\nmap<int, Request> requestsMap;\n\nvoid request_service(int request_id, string request_description, int importance) {\n    Request r = {request_id, request_description, importance, 'n'};\n    requestsQueue.push(r);\n    requestsMap[request_id] = r;\n}\n\nvoid print_requests() {\n    for (auto item : requestsMap) {\n        cout << item.first << \" \" << item.second.status << endl;\n    }\n}\n\nint get_next_request() {\n    while (!requestsQueue.empty()) {\n        Request r = requestsQueue.top();\n        requestsQueue.pop();\n        if (requestsMap[r.id].status == 'n') return r.id;\n    }\n    return -1;\n}\n\nvoid set_request_status(int request_id, char status) {\n    requestsMap[request_id].status = status;\n}",
+      "subQuestions": [
+        {
+          "label": "i",
+          "prompt": "Implement request_service(int request_id, string request_description, int importance)."
+        },
+        {
+          "label": "ii",
+          "prompt": "Implement print_requests()."
+        },
+        {
+          "label": "iii",
+          "prompt": "Implement get_next_request()."
+        },
+        {
+          "label": "iv",
+          "prompt": "Implement set_request_status(int request_id, char status) with complexity less than O(N)."
+        }
+      ]
+    }
+  ]
+}
