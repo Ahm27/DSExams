@@ -72,6 +72,19 @@ function buildDiagramPlaceholder(diagramType: string) {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
+function resolvePublicAssetPath(value: string) {
+  if (!value.trim() || value.startsWith("data:") || /^https?:\/\//.test(value)) {
+    return value;
+  }
+
+  if (!value.startsWith("/")) {
+    return value;
+  }
+
+  const base = import.meta.env.BASE_URL || "/";
+  return `${base.replace(/\/$/, "")}/${value.replace(/^\//, "")}`;
+}
+
 function normalizeQuestion(rawQuestion: unknown, examYear: number, index: number): ExamQuestion | null {
   if (!isRecord(rawQuestion)) {
     return null;
@@ -292,7 +305,7 @@ function normalizeQuestion(rawQuestion: unknown, examYear: number, index: number
         ),
         answerImage:
           typeof rawQuestion.answerImage === "string" && rawQuestion.answerImage.trim()
-            ? rawQuestion.answerImage
+            ? resolvePublicAssetPath(rawQuestion.answerImage)
             : undefined,
         explanation,
       };
@@ -315,7 +328,7 @@ function normalizeQuestion(rawQuestion: unknown, examYear: number, index: number
         initialNodes: toStringArray(rawQuestion.initialNodes),
         answerImage:
           typeof rawQuestion.answerImage === "string" && rawQuestion.answerImage.trim()
-            ? rawQuestion.answerImage
+            ? resolvePublicAssetPath(rawQuestion.answerImage)
             : buildDiagramPlaceholder(diagramType),
         explanation,
       };

@@ -11,4 +11,8 @@ export default defineConfig({
     },
   },
   assetsInclude: ["**/*.svg", "**/*.csv"],
+<<<<<<< HEAD
 })
+=======
+})
+>>>>>>> 116cbf5 (Fix GitHub Pages deployment)
