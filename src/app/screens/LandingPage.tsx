@@ -15,10 +15,11 @@ export function LandingPage({ onStart }: LandingPageProps) {
   const [creditGlitch, setCreditGlitch] = useState(false);
 
   useEffect(() => {
+    unlock();
     return () => {
       stopSound("home");
     };
-  }, []);
+  }, [stopSound, unlock]);
 
   useEffect(() => {
     if (enabled) {
@@ -41,6 +42,8 @@ export function LandingPage({ onStart }: LandingPageProps) {
     <div
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       onPointerDownCapture={unlock}
+      onKeyDownCapture={unlock}
+      onTouchStartCapture={unlock}
     >
       <ParticleBackground />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(0,189,255,0.18),transparent_18%),radial-gradient(circle_at_50%_42%,rgba(168,85,247,0.15),transparent_28%),linear-gradient(180deg,rgba(5,8,18,0.72),rgba(5,8,18,0.35)_38%,rgba(3,5,12,0.92))]" />

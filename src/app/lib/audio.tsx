@@ -185,14 +185,21 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
       audio = new Audio(source);
       audio.loop = true;
       audio.preload = "auto";
+      audio.playsInline = true;
       audio.load();
       loopAudioRef.current[type] = audio;
     }
 
     activeLoopsRef.current.add(type);
     audio.volume = preferences.volume;
+    audio.muted = false;
     void audio.play().catch(() => {
-      // Ignore autoplay rejection until the next user interaction.
+      // Prime the loop muted so it can become audible as soon as the page is interacted with.
+      audio!.muted = true;
+      audio!.volume = 0;
+      void audio!.play().catch(() => {
+        // Ignore autoplay rejection until the next user interaction.
+      });
     });
   };
 
@@ -216,6 +223,7 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
           continue;
         }
 
+        audio.muted = false;
         audio.volume = preferences.volume;
         if (audio.paused) {
           void audio.play().catch(() => {
@@ -255,6 +263,7 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
       }
 
       audio.volume = preferences.enabled ? preferences.volume : 0;
+      audio.muted = !preferences.enabled || preferences.volume <= 0;
 
       if (!preferences.enabled || preferences.volume <= 0) {
         audio.pause();
