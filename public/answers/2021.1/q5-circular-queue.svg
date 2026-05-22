@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <rect width="960" height="560" fill="#050812"/>
+  <rect x="28" y="28" width="904" height="504" rx="20" fill="#0f1629" stroke="#00ffff" stroke-width="3"/>
+  <text x="480" y="90" fill="#00ffff" font-family="monospace" font-size="34" text-anchor="middle">Circular Queue Final State</text>
+  <text x="480" y="136" fill="#94a3b8" font-family="monospace" font-size="20" text-anchor="middle">front = 2, back = 1</text>
+  <g transform="translate(210 220)">
+    <rect x="0" y="0" width="180" height="140" rx="12" fill="#122032" stroke="#a855f7" stroke-width="3"/>
+    <rect x="180" y="0" width="180" height="140" rx="0" fill="#122032" stroke="#a855f7" stroke-width="3"/>
+    <rect x="360" y="0" width="180" height="140" rx="12" fill="#122032" stroke="#a855f7" stroke-width="3"/>
+    <text x="90" y="58" fill="#94a3b8" font-family="monospace" font-size="18" text-anchor="middle">index 0</text>
+    <text x="270" y="58" fill="#94a3b8" font-family="monospace" font-size="18" text-anchor="middle">index 1</text>
+    <text x="450" y="58" fill="#94a3b8" font-family="monospace" font-size="18" text-anchor="middle">index 2</text>
+    <text x="90" y="106" fill="#10b981" font-family="monospace" font-size="42" text-anchor="middle">6</text>
+    <text x="270" y="106" fill="#10b981" font-family="monospace" font-size="42" text-anchor="middle">6</text>
+    <text x="450" y="106" fill="#10b981" font-family="monospace" font-size="42" text-anchor="middle">7</text>
+  </g>
+  <text x="660" y="250" fill="#00ffff" font-family="monospace" font-size="24">front → index 2</text>
+  <text x="660" y="290" fill="#a855f7" font-family="monospace" font-size="24">back → index 1</text>
+</svg>

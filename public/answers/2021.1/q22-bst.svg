@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+  <rect width="960" height="560" fill="#050812"/>
+  <rect x="28" y="28" width="904" height="504" rx="20" fill="#0f1629" stroke="#00ffff" stroke-width="3"/>
+  <text x="480" y="84" fill="#00ffff" font-family="monospace" font-size="32" text-anchor="middle">BST After Insertions</text>
+  <g stroke="#00ffff" stroke-width="3" fill="none">
+    <line x1="480" y1="140" x2="330" y2="220"/>
+    <line x1="480" y1="140" x2="630" y2="220"/>
+    <line x1="330" y1="220" x2="240" y2="300"/>
+    <line x1="330" y1="220" x2="420" y2="300"/>
+    <line x1="630" y1="220" x2="560" y2="300"/>
+    <line x1="630" y1="220" x2="720" y2="300"/>
+    <line x1="240" y1="300" x2="190" y2="380"/>
+    <line x1="240" y1="300" x2="290" y2="380"/>
+  </g>
+  <g font-family="monospace" font-size="28" text-anchor="middle">
+    <circle cx="480" cy="140" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="480" y="150" fill="#e2e8f0">80</text>
+    <circle cx="330" cy="220" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="330" y="230" fill="#e2e8f0">56</text>
+    <circle cx="630" cy="220" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="630" y="230" fill="#e2e8f0">90</text>
+    <circle cx="240" cy="300" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="240" y="310" fill="#e2e8f0">48</text>
+    <circle cx="420" cy="300" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="420" y="310" fill="#e2e8f0">69</text>
+    <circle cx="560" cy="300" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="560" y="310" fill="#e2e8f0">83</text>
+    <circle cx="720" cy="300" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="720" y="310" fill="#e2e8f0">100</text>
+    <circle cx="190" cy="380" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="190" y="390" fill="#e2e8f0">30</text>
+    <circle cx="290" cy="380" r="34" fill="#122032" stroke="#10b981" stroke-width="3"/><text x="290" y="390" fill="#e2e8f0">54</text>
+  </g>
+</svg>

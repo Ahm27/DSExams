@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360">
+  <rect width="960" height="360" fill="#050812"/>
+  <rect x="24" y="24" width="912" height="312" rx="18" fill="#0f1629" stroke="#00ffff" stroke-width="3"/>
+  <text x="480" y="82" fill="#00ffff" font-family="monospace" font-size="32" text-anchor="middle">Linked List Final State</text>
+  <text x="100" y="184" fill="#10b981" font-family="monospace" font-size="24">head</text>
+  <text x="840" y="184" fill="#10b981" font-family="monospace" font-size="24">tail</text>
+  <g transform="translate(150 130)">
+    <rect x="0" y="0" width="120" height="70" rx="10" fill="#122032" stroke="#10b981" stroke-width="3"/>
+    <rect x="170" y="0" width="120" height="70" rx="10" fill="#122032" stroke="#10b981" stroke-width="3"/>
+    <rect x="340" y="0" width="120" height="70" rx="10" fill="#122032" stroke="#10b981" stroke-width="3"/>
+    <rect x="510" y="0" width="120" height="70" rx="10" fill="#122032" stroke="#10b981" stroke-width="3"/>
+    <text x="60" y="45" fill="#e2e8f0" font-family="monospace" font-size="34" text-anchor="middle">9</text>
+    <text x="230" y="45" fill="#e2e8f0" font-family="monospace" font-size="34" text-anchor="middle">8</text>
+    <text x="400" y="45" fill="#e2e8f0" font-family="monospace" font-size="34" text-anchor="middle">10</text>
+    <text x="570" y="45" fill="#e2e8f0" font-family="monospace" font-size="34" text-anchor="middle">11</text>
+    <path d="M120 35 H170 M290 35 H340 M460 35 H510" stroke="#00ffff" stroke-width="4" fill="none"/>
+    <polygon points="165,28 180,35 165,42" fill="#00ffff"/>
+    <polygon points="335,28 350,35 335,42" fill="#00ffff"/>
+    <polygon points="505,28 520,35 505,42" fill="#00ffff"/>
+  </g>
+  <text x="910" y="184" fill="#94a3b8" font-family="monospace" font-size="26" text-anchor="middle">NULL</text>
+</svg>

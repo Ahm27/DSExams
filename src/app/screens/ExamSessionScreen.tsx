@@ -58,6 +58,7 @@ interface SessionState {
 }
 
 interface ObjectiveEvaluation {
+  questionId: string;
   correct: boolean;
   explanation?: string;
 }
@@ -70,6 +71,12 @@ interface DiagramZone {
 interface DiagramExpectedConnection {
   from: string;
   to: string;
+}
+
+interface CircularQueueExpectedState {
+  front: number;
+  back: number;
+  slots: number;
 }
 
 const OBJECTIVE_XP = 100;
@@ -294,6 +301,95 @@ function buildMapExpectedZones(question: DrawDiagramQuestion): DiagramZone[] {
   return [{ id: "map", labels }];
 }
 
+function compareBstValues(left: string, right: string) {
+  const leftNum = Number(left);
+  const rightNum = Number(right);
+
+  if (Number.isFinite(leftNum) && Number.isFinite(rightNum)) {
+    return leftNum - rightNum;
+  }
+
+  return left.localeCompare(right);
+}
+
+function buildBstExpectedZones(question: DrawDiagramQuestion): DiagramZone[] {
+  type BstNode = { label: string; left: BstNode | null; right: BstNode | null };
+
+  const insertNode = (root: BstNode | null, label: string): BstNode => {
+    if (!root) {
+      return { label, left: null, right: null };
+    }
+
+    if (compareBstValues(label, root.label) < 0) {
+      root.left = insertNode(root.left, label);
+    } else {
+      root.right = insertNode(root.right, label);
+    }
+
+    return root;
+  };
+
+  const levels: string[][] = [];
+  let root: BstNode | null = null;
+
+  for (const value of question.initialNodes) {
+    root = insertNode(root, value);
+  }
+
+  const walkLevels = (node: BstNode | null, depth: number) => {
+    if (!node) {
+      return;
+    }
+
+    if (!levels[depth]) {
+      levels[depth] = [];
+    }
+
+    levels[depth].push(node.label);
+    walkLevels(node.left, depth + 1);
+    walkLevels(node.right, depth + 1);
+  };
+
+  walkLevels(root, 0);
+
+  return levels.map((labels, index) => ({
+    id: `level-${index}`,
+    labels,
+  }));
+}
+
+function buildCircularQueueExpectedZones(question: DrawDiagramQuestion): DiagramZone[] {
+  const answer = question.answerText ?? "";
+  const slotsMatch = answer.match(/\[([^\]]*)\]/);
+  const values = slotsMatch
+    ? slotsMatch[1]
+        .split(",")
+        .map((value) => value.trim())
+    : [];
+
+  return values.map((value, index) => ({
+    id: `slot-${index}`,
+    labels: value ? [value] : [],
+  }));
+}
+
+function buildCircularQueueExpectedState(question: DrawDiagramQuestion): CircularQueueExpectedState | null {
+  const answer = question.answerText ?? "";
+  const frontMatch = answer.match(/Front\s*=\s*(\d+)/i);
+  const backMatch = answer.match(/Back\s*=\s*(\d+)/i);
+  const slots = buildCircularQueueExpectedZones(question).length;
+
+  if (!frontMatch || !backMatch || slots === 0) {
+    return null;
+  }
+
+  return {
+    front: Number(frontMatch[1]),
+    back: Number(backMatch[1]),
+    slots,
+  };
+}
+
 function buildExpectedDiagramZones(question: DrawDiagramQuestion): DiagramZone[] {
   switch (question.diagramType) {
     case "queueVector":
@@ -302,6 +398,10 @@ function buildExpectedDiagramZones(question: DrawDiagramQuestion): DiagramZone[]
       return buildLinkedListExpectedZones(question);
     case "map":
       return buildMapExpectedZones(question);
+    case "bst":
+      return buildBstExpectedZones(question);
+    case "circularQueue":
+      return buildCircularQueueExpectedZones(question);
     case "treeAnalysis":
       return [];
     default:
@@ -446,9 +546,11 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
   const [diagramEvaluation, setDiagramEvaluation] = useState<DiagramSubmitResult | null>(null);
 
   const currentQuestion = exam.questions[session.currentIndex];
+  const currentEvaluation =
+    currentQuestion && evaluation?.questionId === currentQuestion.id ? evaluation : null;
   const isInteractiveDiagram =
     currentQuestion?.type === "drawDiagram"
-      ? ["stack", "queueVector", "linkedList", "map"].includes(currentQuestion.diagramType)
+      ? ["stack", "queueVector", "linkedList", "map", "bst", "circularQueue"].includes(currentQuestion.diagramType)
       : false;
   const expectedDiagramZones = useMemo(
     () =>
@@ -462,6 +564,13 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
       currentQuestion?.type === "drawDiagram"
         ? buildExpectedDiagramConnections(currentQuestion)
         : [],
+    [currentQuestion],
+  );
+  const expectedCircularQueueState = useMemo(
+    () =>
+      currentQuestion?.type === "drawDiagram" && currentQuestion.diagramType === "circularQueue"
+        ? buildCircularQueueExpectedState(currentQuestion)
+        : null,
     [currentQuestion],
   );
 
@@ -566,7 +675,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
   };
 
   const handleSubmitObjective = () => {
-    if (!currentQuestion || evaluation) {
+    if (!currentQuestion || currentEvaluation) {
       return;
     }
 
@@ -611,6 +720,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
     }
 
     setEvaluation({
+      questionId: currentQuestion.id,
       correct,
       explanation: currentQuestion.explanation,
     });
@@ -618,14 +728,14 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
   };
 
   const handleNextObjective = () => {
-    if (!evaluation || !currentQuestion || !isObjectiveQuestion(currentQuestion)) {
+    if (!currentEvaluation || !currentQuestion || !isObjectiveQuestion(currentQuestion)) {
       return;
     }
 
     advanceSession({
-      health: evaluation.correct ? session.health : Math.max(0, session.health - HEALTH_PENALTY),
-      xp: session.xp + (evaluation.correct ? currentQuestion.xp ?? OBJECTIVE_XP : 0),
-      score: session.score + (evaluation.correct ? 1 : 0),
+      health: currentEvaluation.correct ? session.health : Math.max(0, session.health - HEALTH_PENALTY),
+      xp: session.xp + (currentEvaluation.correct ? currentQuestion.xp ?? OBJECTIVE_XP : 0),
+      score: session.score + (currentEvaluation.correct ? 1 : 0),
       objectiveAnswered: session.objectiveAnswered + 1,
     });
   };
@@ -643,7 +753,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
   };
 
   const moveArrangeItem = (index: number, direction: "up" | "down") => {
-    if (evaluation) {
+    if (currentEvaluation) {
       return;
     }
 
@@ -796,7 +906,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
               </span>
             </div>
 
-            <h2 className="text-readable text-3xl md:text-4xl font-semibold mb-6 text-foreground">
+            <h2 className="text-readable whitespace-pre-wrap text-3xl md:text-4xl font-semibold mb-6 text-foreground">
               {currentQuestion.question}
             </h2>
 
@@ -806,10 +916,10 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                   <AnswerCard
                     key={option}
                     text={option}
-                    onClick={() => !evaluation && setSelectedOption(index)}
-                    selected={!evaluation && selectedOption === index}
+                    onClick={() => !currentEvaluation && setSelectedOption(index)}
+                    selected={!currentEvaluation && selectedOption === index}
                     state={
-                      evaluation
+                      currentEvaluation
                         ? index === currentQuestion.correctAnswer
                           ? "correct"
                           : selectedOption === index
@@ -817,7 +927,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                           : "default"
                         : "default"
                     }
-                    disabled={Boolean(evaluation)}
+                    disabled={Boolean(currentEvaluation)}
                   />
                 ))}
               </div>
@@ -827,9 +937,10 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
               <BinaryDecision
                 onSelect={setSelectedBoolean}
                 selected={selectedBoolean}
-                isCorrect={evaluation?.correct}
-                showValidation={Boolean(evaluation)}
-                disabled={Boolean(evaluation)}
+                isCorrect={currentEvaluation?.correct}
+                correctAnswer={currentQuestion.correctAnswer}
+                showValidation={Boolean(currentEvaluation)}
+                disabled={Boolean(currentEvaluation)}
               />
             )}
 
@@ -844,7 +955,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                       content={option}
                       isSelected={isSelected}
                       onToggle={() => {
-                        if (evaluation) {
+                        if (currentEvaluation) {
                           return;
                         }
 
@@ -855,12 +966,12 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                         );
                       }}
                       isCorrect={
-                        evaluation
+                        currentEvaluation
                           ? currentQuestion.correctAnswers.includes(index) === isSelected
                           : undefined
                       }
-                      showValidation={Boolean(evaluation)}
-                      disabled={Boolean(evaluation)}
+                      showValidation={Boolean(currentEvaluation)}
+                      disabled={Boolean(currentEvaluation)}
                     />
                   );
                 })}
@@ -881,7 +992,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                           <TerminalInput
                             value={fillAnswers[index] ?? ""}
                             onChange={(value) => {
-                              if (evaluation) {
+                              if (currentEvaluation) {
                                 return;
                               }
 
@@ -894,12 +1005,12 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                             placeholder="..."
                             prefix=""
                             isCorrect={
-                              evaluation
+                              currentEvaluation
                                 ? normalizeLooseText(fillAnswers[index] ?? "") ===
                                   normalizeLooseText(currentQuestion.correctAnswers[index])
                                 : undefined
                             }
-                            showValidation={Boolean(evaluation)}
+                            showValidation={Boolean(currentEvaluation)}
                           />
                         </span>
                       )}
@@ -916,8 +1027,8 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                   value={codeAnswer}
                   onChange={setCodeAnswer}
                   placeholder="Enter expected output..."
-                  isCorrect={evaluation?.correct}
-                  showValidation={Boolean(evaluation)}
+                  isCorrect={currentEvaluation?.correct}
+                  showValidation={Boolean(currentEvaluation)}
                 />
               </div>
             )}
@@ -930,6 +1041,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                 correctMatches={currentQuestion.correctMatches}
                 onValidate={(correct) => {
                   setEvaluation({
+                    questionId: currentQuestion.id,
                     correct,
                     explanation: currentQuestion.explanation,
                   });
@@ -949,8 +1061,8 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                     totalItems={arrangeItems.length}
                     onMoveUp={() => moveArrangeItem(index, "up")}
                     onMoveDown={() => moveArrangeItem(index, "down")}
-                    isCorrect={evaluation ? item === currentQuestion.correctOrder[index] : undefined}
-                    showValidation={Boolean(evaluation)}
+                    isCorrect={currentEvaluation ? item === currentQuestion.correctOrder[index] : undefined}
+                    showValidation={Boolean(currentEvaluation)}
                   />
                 ))}
               </div>
@@ -1022,6 +1134,7 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
                     initialNodes={currentQuestion.initialNodes}
                     expectedZones={expectedDiagramZones}
                     expectedConnections={expectedDiagramConnections}
+                    expectedCircularQueueState={expectedCircularQueueState ?? undefined}
                     onSubmit={(result) => {
                       setDiagramEvaluation(result);
                       setDiagramAnswerRevealed(true);
@@ -1053,20 +1166,20 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
             )}
           </NeonCard>
 
-          {evaluation?.explanation && (
-            <NeonCard glowColor={evaluation.correct ? "green" : "red"} className="mb-6">
+          {currentEvaluation?.explanation && (
+            <NeonCard glowColor={currentEvaluation.correct ? "green" : "red"} className="mb-6">
               <div className="flex items-start gap-3">
-                {evaluation.correct ? (
+                {currentEvaluation.correct ? (
                   <CheckCircle2 className="w-5 h-5 text-[var(--neon-green)] mt-0.5" />
                 ) : (
                   <AlertCircle className="w-5 h-5 text-[var(--neon-red)] mt-0.5" />
                 )}
                 <div>
                   <p className="font-orbitron mb-2">
-                    {evaluation.correct ? "ACCESS GRANTED" : "ACCESS DENIED"}
+                    {currentEvaluation.correct ? "ACCESS GRANTED" : "ACCESS DENIED"}
                   </p>
                   <p className="font-mono text-sm text-muted-foreground">
-                    {evaluation.explanation}
+                    {currentEvaluation.explanation}
                   </p>
                 </div>
               </div>
@@ -1187,16 +1300,16 @@ export function ExamSessionScreen({ exam, onBack, onComplete }: ExamSessionScree
           {isObjectiveQuestion(currentQuestion) && currentQuestion.type !== "matching" && (
             <div className="flex justify-end">
               <CyberButton
-                onClick={evaluation ? handleNextObjective : handleSubmitObjective}
-                disabled={!evaluation && !canSubmitObjective}
+                onClick={currentEvaluation ? handleNextObjective : handleSubmitObjective}
+                disabled={!currentEvaluation && !canSubmitObjective}
               >
-                {evaluation ? "Next Question" : "Submit Answer"}
+                {currentEvaluation ? "Next Question" : "Submit Answer"}
                 <ArrowRight className="w-5 h-5 ml-2" />
               </CyberButton>
             </div>
           )}
 
-          {currentQuestion.type === "matching" && evaluation && (
+          {currentQuestion.type === "matching" && currentEvaluation && (
             <div className="flex justify-end">
               <CyberButton onClick={handleNextObjective}>
                 Next Question

@@ -197,9 +197,9 @@
       "id": 17,
       "type": "compoundQuestion",
       "section": "2nd Question - B",
-      "question": "Given the figure below, answer the following questions.\n\n50\n/ \\\n17 76\n/ \\ /\n9 23 54\n\\ \\ \\\n14 19 72\n/ /\n12 67",
+      "question": "Given the figure below, answer the following questions.\n\n           50\n         /    \\\n       17      76\n      /  \\    /\n     9   23  54\n      \\    \\   \\\n      14   19   72\n     /          /\n    12         67",
       "answerImage": "/answers/2022/q17-tree-analysis.svg",
-      "modelAnswer": "i. No, it is not balanced because the subtree rooted at 9 is not height-balanced.\nii. No, it is not a Binary Search Tree because node 19 appears in the right subtree of 23 while 19 < 23.\niii. Post-order traversal: 12, 14, 9, 19, 23, 17, 67, 72, 54, 76, 50.\niv. There is no unique BST-style replacement root here because the given tree is not a valid BST. If BST deletion rules were applied hypothetically, the inorder successor of 50 would be 54.",
+      "modelAnswer": "i. No, it is not balanced because the subtree rooted at 9 is not height-balanced.\nii. No, it is not a Binary Search Tree because node 19 appears in the right subtree of 23 while 19 < 23.\niii. Post-order traversal: 12, 14, 9, 19, 23, 17, 67, 72, 54, 76, 50.\niv. Depending on the deletion convention used for a non-leaf root, the replacement may be 23 if the left-subtree replacement/predecessor-style rule is used, or 54 if the right-subtree replacement/successor-style rule is used.",
       "subQuestions": [
         {
           "label": "i",

@@ -88,9 +88,17 @@ export interface CompoundQuestion extends BaseQuestion {
 
 export interface DrawDiagramQuestion extends BaseQuestion {
   type: "drawDiagram";
-  diagramType: "stack" | "queueVector" | "linkedList" | "map" | "treeAnalysis";
+  diagramType:
+    | "stack"
+    | "queueVector"
+    | "linkedList"
+    | "map"
+    | "treeAnalysis"
+    | "bst"
+    | "circularQueue";
   code?: string;
   initialNodes: string[];
+  answerText?: string;
   answerImage: string;
 }
 

@@ -1,0 +1,312 @@
+{
+  "year": "2021.1",
+  "title": "Data Structures 2021 Exam 1",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "id": 1,
+      "type": "mcq",
+      "section": "Mid Term Exam - Question 1 - A",
+      "question": "Which data structure is best suited for testing whether a string is a palindrome i.e. spelled the same way backwards and forwards?",
+      "options": [
+        "vector",
+        "stack",
+        "queue",
+        "array"
+      ],
+      "correctAnswer": "stack"
+    },
+    {
+      "id": 2,
+      "type": "mcq",
+      "section": "Mid Term Exam - Question 1 - A",
+      "question": "A data structure where elements can be added or removed at the beginning or the end but not in the middle:",
+      "options": [
+        "Linked lists",
+        "Stacks",
+        "Queues",
+        "Deque"
+      ],
+      "correctAnswer": "Deque"
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "section": "Mid Term Exam - Question 1 - A",
+      "question": "Given pointers to the head and tail of a singly linked list, which of the following operations is dependent on the length of the linked list?",
+      "options": [
+        "Delete the first element-> [O(1)]",
+        "Insert a new element as a first element -> [O(1)]",
+        "Delete the last element of the list->[O(n)]",
+        "Add a new element at the end of the list->[O(1)]"
+      ],
+      "correctAnswer": "Delete the last element of the list->[O(n)]"
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "section": "Mid Term Exam - Question 1 - A",
+      "question": "What is the time complexity for finding a value in a linked list?",
+      "options": [
+        "O(1)",
+        "O(n)",
+        "O(n^2)",
+        "O(log(n))"
+      ],
+      "correctAnswer": "O(n)"
+    },
+    {
+      "id": 5,
+      "type": "drawDiagram",
+      "section": "Mid Term Exam - Question 1 - B",
+      "diagramType": "circularQueue",
+      "question": "Assume that you are starting with an empty queue q implemented as a circular array of size 3, show the contents of the array after performing the following set of operations: q.enqueue(5), q.enqueue(6), q.dequeue(), q.enqueue(7), q.enqueue(q.front()), q.dequeue() show the positions of the front and back pointers. [7 Marks]",
+      "code": "q.enqueue(5)\nq.enqueue(6)\nq.dequeue()\nq.enqueue(7)\nq.enqueue(q.front())\nq.dequeue()",
+      "answer": "Front=2\nBack=1\n[6,6,7]",
+      "answerImage": "/answers/2021.1/q5-circular-queue.svg",
+      "selfReview": true
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "Which data structure allows deleting data, and inserting elements at the back?",
+      "options": [
+        "Stack",
+        "Queue",
+        "Deque",
+        "Binary search tree"
+      ],
+      "correctAnswer": "Queue"
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "A user needs to build a list dynamically and data needs to be found fast by index (preferably in O(1)). The user does not care about statistics such as finding max or min or median. What is the most suitable data structure for this case?",
+      "options": [
+        "Array List",
+        "Singly Linked List",
+        "Stack",
+        "Queue"
+      ],
+      "correctAnswer": "Array List"
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "What is the value of the postfix expression 6 3 2 4 + - *?",
+      "options": [
+        "1",
+        "40",
+        "74",
+        "-18"
+      ],
+      "correctAnswer": "-18"
+    },
+    {
+      "id": 9,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "Assume that you are using a stack to check whether a sequence of parentheses is balanced or not. If the program was given the following sequence (()(()) (())) , what is the maximum number of elements that will exist in the stack at any point?",
+      "options": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "4"
+    },
+    {
+      "id": 10,
+      "type": "trueFalse",
+      "section": "Final Exam - Question 3",
+      "question": "In a binary search tree, the value at each node is greater than the values in all its subtrees.",
+      "correctAnswer": "False"
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "The elements of a stack and queue should not be accessed directly.",
+      "options": [
+        "Front",
+        "Back",
+        "Middle",
+        "None of the above"
+      ],
+      "correctAnswer": "Middle"
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "What is time complexity for inserting an element at the front of a linked list when you have a pointer to the head of the list?",
+      "options": [
+        "O(1)",
+        "O(n)",
+        "O(n^2)",
+        "O(log(n))"
+      ],
+      "correctAnswer": "O(1)"
+    },
+    {
+      "id": 13,
+      "type": "trueFalse",
+      "section": "Final Exam - Question 3",
+      "question": "Inserting an element at the beginning of an array list requires more operations than inserting an element at the beginning of a linked list, assuming both are not empty.",
+      "correctAnswer": "True"
+    },
+    {
+      "id": 14,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "Which of the following STL containers store values in adjacent memory locations?",
+      "options": [
+        "vector",
+        "list",
+        "set",
+        "map"
+      ],
+      "correctAnswer": "vector"
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "Which of the following more memory with the same number of elements?",
+      "options": [
+        "Array List 5->5",
+        "Singly Linked list 5->10",
+        "Doubly Linked List 5->15",
+        "Queue 5->5"
+      ],
+      "correctAnswer": "Doubly Linked List 5->15"
+    },
+    {
+      "id": 16,
+      "type": "trueFalse",
+      "section": "Final Exam - Question 3",
+      "question": "The order in which the nodes are visited in a preorder traversal of a binary search tree is exactly the reverse of the order they are visited in aoccupies postorder traversal",
+      "correctAnswer": "False"
+    },
+    {
+      "id": 17,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "Which of the following is true about inorder traversal of a binary search tree?",
+      "options": [
+        "It displays the values in descending order",
+        "It displays the values in Ascending order",
+        "It displays the values in random order",
+        "None of the above"
+      ],
+      "correctAnswer": "It displays the values in Ascending order"
+    },
+    {
+      "id": 18,
+      "type": "trueFalse",
+      "section": "Final Exam - Question 3",
+      "question": "Linear probing, quadratic probing, and double hashing are all forms of open addressing in hash tables.",
+      "correctAnswer": "True"
+    },
+    {
+      "id": 19,
+      "type": "mcq",
+      "section": "Final Exam - Question 3",
+      "question": "Which of the following is a disadvantage of using separate chaining?",
+      "options": [
+        "The space needed by pointers",
+        "The usage of linked lists",
+        "The usage of arrays",
+        "It does not resolve collisions"
+      ],
+      "correctAnswer": "The space needed by pointers"
+    },
+    {
+      "id": 20,
+      "type": "trueFalse",
+      "section": "Final Exam - Question 3",
+      "question": "A hash table collision is where two equal objects have different hash values.",
+      "correctAnswer": "False"
+    },
+    {
+      "id": 21,
+      "type": "drawDiagram",
+      "section": "Question 3 - 1",
+      "diagramType": "linkedList",
+      "question": "Starting with an empty linked list L, show the contents of the list after performing the following set of operations [4 Marks]: L.Append('A'), L.Append('B'), L.Append('C'), L.DeleteAt(1), L.InsertAt(0,'D'), L.Append(L.At(1))",
+      "code": "L.Append('A')\nL.Append('B')\nL.Append('C')\nL.DeleteAt(1)\nL.InsertAt(0,'D')\nL.Append(L.At(1))",
+      "answer": "{D}->{A}->{C}->{A}",
+      "answerImage": "/answers/2021.1/q21-linked-list.svg",
+      "selfReview": true
+    },
+    {
+      "id": 22,
+      "type": "drawDiagram",
+      "section": "Question 3 - 2A",
+      "diagramType": "bst",
+      "question": "Given the following sequence of values: 80, 90, 56, 69, 83, 48, 30, 100, 54\na. Show the contents of an initially empty binary search tree after inserting these values [4 Marks].",
+      "initialNodes": [
+        "80",
+        "90",
+        "56",
+        "69",
+        "83",
+        "48",
+        "30",
+        "100",
+        "54"
+      ],
+      "answer": "80\n/ \\\n56 90\n/ \\ / \\\n48 69 83 100\n/ \\\n30 54",
+      "answerImage": "/answers/2021.1/q22-bst.svg",
+      "selfReview": true
+    },
+    {
+      "id": 23,
+      "type": "fillBlank",
+      "section": "Question 3 - 2B",
+      "question": "Write the sequence of values resulting from the preorder traversal of the tree in the previous question [2 Marks]",
+      "template": "___",
+      "correctAnswers": [
+        "80 ->56-> 48->30 ->54 ->69 ->90->83 ->100"
+      ]
+    },
+    {
+      "id": 24,
+      "type": "compoundQuestion",
+      "section": "Question 4",
+      "question": "Write a C++ template class for a linked list. Your implementation should include the Node class with its constructor as well as the LinkedList class with its constructor [3 Marks]\nAdd the implementation of the following functions (assuming that you already have the implementation of the Append(value), insertAt(position, value), deleteAt(position) and At(position) functions):",
+      "modelAnswer": "template <typename T>\nclass Node {\npublic:\nT value;\nNode<T>* next;\nNode(T val) : value(val), next(nullptr) {}\n};\ntemplate <typename T>\nclass LinkedList {\nprivate:\nNode<T>* head;\nint count;\npublic:\nLinkedList() : head(nullptr), count(0) {}\n// Assumed functions: Append, DeleteAt, At are here\n// b. Reverse(): Displays the values in reverse order using\nrecursion.\nvoid reverse(Node<T>* current) const {\nif (current == nullptr) {\nreturn;\n}\n// Recurse to the end\nreverse(current->next);\n// Print value on the way back (reverse order)\nstd::cout << current->value;\n}\n// c. MoveZeroes(): Moves all nodes with value zero to the end\nvoid MoveZeroes() {\nint i=0;\nfor(int index=0;index<count;++index)\nif (At(i) == 0) {\nDeleteAt(i);\nAppend(T(0));\n} else {\ni++;\n}\n}\n}\n};",
+      "subQuestions": [
+        {
+          "label": "a",
+          "prompt": "Write a C++ template class for a linked list. Your implementation should include the Node class with its constructor as well as the LinkedList class with its constructor."
+        },
+        {
+          "label": "b",
+          "prompt": "Reverse(): which displays the values in the list in reverse order i.e. starting with the value at the tail and ending with the value at the head."
+        },
+        {
+          "label": "c",
+          "prompt": "MoveZeroes(): which moves all nodes with value zero to the end of the list."
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "type": "essay",
+      "section": "Question 5 - 1",
+      "question": "A player is playing a card game where he draws cards from a pile. He can draw one card each round and the card is placed on top of an initially empty pile. If the card he draws matches the card at the top of the pile, both cards are discarded. The player wins if he has three cards or less left in his pile. Write a C++ program that takes the number of cards the player draws and a sequence of letters representing each card. The output of the program should be whether the player won or lost. Use the appropriate data structure. The following are example test cases [7 marks]:\nSequence size Inputs sequence Output Remaining cards\n6 ABCCBA Yes 0\n8 ABBACDDA Yes 2\n7 BCDDABC No 5",
+      "modelAnswer": "#include <iostream>\n#include <stack>\n#include <string>\nvoid check_card_game_winner(int sequence_size, const std::string&\ninput_sequence) {\nstd::stack<char> pile;\nfor (char card : input_sequence) {\nif (!pile.empty() && pile.top() == card) {\npile.pop();\n} else {\npile.push(card);\n}\n}\nif (pile.size() <= 3) {\nstd::cout << \"Yes\" << std::endl;\n} else {\nstd::cout << \"No\" << std::endl;\n}\n}"
+    },
+    {
+      "id": 26,
+      "type": "essay",
+      "section": "Question 5 - 2",
+      "question": "Write a C++ function remove(queue, value) that takes a queue of integers and a value as parameters and removes all occurrences of the value from the queue then returns the modified queue. Do not use any data structures other than queues. You can use the queue STL container [5 Marks].",
+      "modelAnswer": "#include <queue>\n#include <iostream>\nstd::queue<int>& remove(std::queue<int>& q, int value) {\nint original_size = q.size();\nfor (int i = 0; i < original_size; ++i) {\nint front_element = q.front();\nq.pop();\nif (front_element != value) {\nq.push(front_element);\n}\n}\nreturn q;\n}"
+    }
+  ]
+}

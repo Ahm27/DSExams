@@ -183,6 +183,21 @@ function normalizeQuestion(rawQuestion: unknown, examYear: number, index: number
       };
     }
 
+    case "shortAnswer": {
+      const answer =
+        rawQuestion.correctAnswer ?? rawQuestion.answer ?? rawQuestion.modelAnswer ?? "";
+
+      return {
+        id,
+        type: "fillBlank",
+        question,
+        section,
+        template: "___",
+        correctAnswers: [String(answer)],
+        explanation,
+      };
+    }
+
     case "codeOutput":
       return {
         id,
@@ -316,7 +331,9 @@ function normalizeQuestion(rawQuestion: unknown, examYear: number, index: number
         | "queueVector"
         | "linkedList"
         | "map"
-        | "treeAnalysis";
+        | "treeAnalysis"
+        | "bst"
+        | "circularQueue";
 
       return {
         id,
@@ -326,6 +343,10 @@ function normalizeQuestion(rawQuestion: unknown, examYear: number, index: number
         diagramType,
         code: typeof rawQuestion.code === "string" ? rawQuestion.code : undefined,
         initialNodes: toStringArray(rawQuestion.initialNodes),
+        answerText:
+          typeof rawQuestion.answer === "string" && rawQuestion.answer.trim()
+            ? rawQuestion.answer
+            : undefined,
         answerImage:
           typeof rawQuestion.answerImage === "string" && rawQuestion.answerImage.trim()
             ? resolvePublicAssetPath(rawQuestion.answerImage)

@@ -185,7 +185,7 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
       audio = new Audio(source);
       audio.loop = true;
       audio.preload = "auto";
-      audio.playsInline = true;
+      (audio as any).playsInline = true;
       audio.load();
       loopAudioRef.current[type] = audio;
     }

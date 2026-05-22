@@ -5,6 +5,7 @@ interface BinaryDecisionProps {
   onSelect: (value: boolean) => void;
   selected?: boolean | null;
   isCorrect?: boolean;
+  correctAnswer?: boolean;
   showValidation?: boolean;
   disabled?: boolean;
 }
@@ -13,9 +14,30 @@ export function BinaryDecision({
   onSelect,
   selected = null,
   isCorrect,
+  correctAnswer,
   showValidation = false,
   disabled = false,
 }: BinaryDecisionProps) {
+  const trueState = showValidation
+    ? correctAnswer === true
+      ? "correct"
+      : selected === true && isCorrect === false
+      ? "incorrect"
+      : "default"
+    : selected === true
+    ? "selected"
+    : "default";
+
+  const falseState = showValidation
+    ? correctAnswer === false
+      ? "correct"
+      : selected === false && isCorrect === false
+      ? "incorrect"
+      : "default"
+    : selected === false
+    ? "selected"
+    : "default";
+
   return (
     <div className="space-y-4">
       <p className="font-mono text-xs text-[var(--neon-purple)] uppercase tracking-wider text-center">
@@ -31,24 +53,22 @@ export function BinaryDecision({
           className={`relative p-8 rounded-lg border-2 backdrop-blur-md
             transition-all duration-300
             ${
-              showValidation
-                ? selected === true && isCorrect
-                  ? "border-[var(--neon-green)] bg-[var(--neon-green)]/20 shadow-[0_0_50px_rgba(16,185,129,0.8)]"
-                  : selected === true && !isCorrect
-                  ? "border-[var(--neon-red)] bg-[var(--neon-red)]/20 shadow-[0_0_50px_rgba(239,68,68,0.8)]"
-                  : "border-[var(--neon-green)]/30 bg-muted/20"
-                : selected === true
+              trueState === "correct"
+                ? "border-[var(--neon-green)] bg-[var(--neon-green)]/20 shadow-[0_0_50px_rgba(16,185,129,0.8)]"
+                : trueState === "incorrect"
+                ? "border-[var(--neon-red)] bg-[var(--neon-red)]/20 shadow-[0_0_50px_rgba(239,68,68,0.8)]"
+                : trueState === "selected"
                 ? "border-[var(--neon-green)] bg-[var(--neon-green)]/20 shadow-[0_0_40px_rgba(16,185,129,0.6)]"
                 : "border-[var(--neon-green)]/50 bg-[var(--card)] hover:border-[var(--neon-green)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
             }
-            ${disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"}
+            ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
           `}
           style={{
             background:
-              selected === true
-                ? showValidation && !isCorrect
-                  ? "rgba(239, 68, 68, 0.15)"
-                  : "rgba(16, 185, 129, 0.15)"
+              trueState === "incorrect"
+                ? "rgba(239, 68, 68, 0.15)"
+                : trueState === "correct" || trueState === "selected"
+                ? "rgba(16, 185, 129, 0.15)"
                 : "rgba(15, 22, 41, 0.7)",
           }}
         >
@@ -65,8 +85,8 @@ export function BinaryDecision({
               transition={{ duration: 0.5 }}
               className={`w-20 h-20 rounded-full border-4 flex items-center justify-center
                 ${
-                  showValidation && selected === true
-                    ? isCorrect
+                  showValidation && trueState !== "default"
+                    ? trueState === "correct"
                       ? "border-[var(--neon-green)] bg-[var(--neon-green)]/20"
                       : "border-[var(--neon-red)] bg-[var(--neon-red)]/20"
                     : "border-[var(--neon-green)] bg-[var(--neon-green)]/10"
@@ -106,26 +126,24 @@ export function BinaryDecision({
           className={`relative p-8 rounded-lg border-2 backdrop-blur-md
             transition-all duration-300
             ${
-              showValidation
-                ? selected === false && isCorrect
-                  ? "border-[var(--neon-green)] bg-[var(--neon-green)]/20 shadow-[0_0_50px_rgba(16,185,129,0.8)]"
-                  : selected === false && !isCorrect
-                  ? "border-[var(--neon-red)] bg-[var(--neon-red)]/20 shadow-[0_0_50px_rgba(239,68,68,0.8)]"
-                  : "border-[var(--neon-red)]/30 bg-muted/20"
-                : selected === false
+              falseState === "correct"
+                ? "border-[var(--neon-green)] bg-[var(--neon-green)]/20 shadow-[0_0_50px_rgba(16,185,129,0.8)]"
+                : falseState === "incorrect"
+                ? "border-[var(--neon-red)] bg-[var(--neon-red)]/20 shadow-[0_0_50px_rgba(239,68,68,0.8)]"
+                : falseState === "selected"
                 ? "border-[var(--neon-red)] bg-[var(--neon-red)]/20 shadow-[0_0_40px_rgba(239,68,68,0.6)]"
                 : "border-[var(--neon-red)]/50 bg-[var(--card)] hover:border-[var(--neon-red)] hover:shadow-[0_0_30px_rgba(239,68,68,0.4)]"
             }
-            ${disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"}
+            ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
           `}
           style={{
             background:
-              selected === false
-                ? showValidation && !isCorrect
-                  ? "rgba(239, 68, 68, 0.15)"
-                  : showValidation && isCorrect
-                  ? "rgba(16, 185, 129, 0.15)"
-                  : "rgba(239, 68, 68, 0.15)"
+              falseState === "incorrect"
+                ? "rgba(239, 68, 68, 0.15)"
+                : falseState === "correct"
+                ? "rgba(16, 185, 129, 0.15)"
+                : falseState === "selected"
+                ? "rgba(239, 68, 68, 0.15)"
                 : "rgba(15, 22, 41, 0.7)",
           }}
         >
@@ -142,8 +160,8 @@ export function BinaryDecision({
               transition={{ duration: 0.5 }}
               className={`w-20 h-20 rounded-full border-4 flex items-center justify-center
                 ${
-                  showValidation && selected === false
-                    ? isCorrect
+                  showValidation && falseState !== "default"
+                    ? falseState === "correct"
                       ? "border-[var(--neon-green)] bg-[var(--neon-green)]/20"
                       : "border-[var(--neon-red)] bg-[var(--neon-red)]/20"
                     : "border-[var(--neon-red)] bg-[var(--neon-red)]/10"

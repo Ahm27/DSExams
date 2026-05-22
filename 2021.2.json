@@ -1,0 +1,243 @@
+{
+  "year": "2021.2",
+  "title": "Data Structures 2021 Exam 2",
+  "difficulty": "medium",
+  "questions": [
+    {
+      "id": 1,
+      "type": "trueFalse",
+      "section": "Question 1",
+      "question": "Inserting an element at the beginning of an array list (at index 0) requires more operations than inserting an element at the beginning of a linked list.",
+      "correctAnswer": "True"
+    },
+    {
+      "id": 2,
+      "type": "trueFalse",
+      "section": "Question 1",
+      "question": "If you change the order of the values used to build a BST, the resulting BSTs will be the same in all cases.",
+      "correctAnswer": "False"
+    },
+    {
+      "id": 3,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "What is the best data structure to solve the following problem? A list needs to be built dynamically. Data must be easy to find, preferably in O(1). The user does not care about any statistics such as finding max or min or median.",
+      "options": [
+        "Array List",
+        "Linked List",
+        "Stack",
+        "Queue"
+      ],
+      "correctAnswer": "Array List"
+    },
+    {
+      "id": 4,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "What is the best definition of a collision in a hash table?",
+      "options": [
+        "Two entries are identical except for their keys.",
+        "Two entries with different data have the exact same key.",
+        "Two entries with different keys have the exact same hash value.",
+        "Two entries with the exact same key have different hash values."
+      ],
+      "correctAnswer": "Two entries with different keys have the exact same hash value."
+    },
+    {
+      "id": 5,
+      "type": "trueFalse",
+      "section": "Question 1",
+      "question": "The bottom element of the stack is the last element added to the stack.",
+      "correctAnswer": "False"
+    },
+    {
+      "id": 6,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "A ____ is a list of homogenous elements in which the addition and deletion of elements occurs only at one end.",
+      "options": [
+        "Stack",
+        "Queue",
+        "array",
+        "Linked List"
+      ],
+      "correctAnswer": "Stack"
+    },
+    {
+      "id": 7,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "The average search time of hashing with linear probing will be less if the load factor is:",
+      "options": [
+        "far less than one",
+        "equals one",
+        "far greater than one",
+        "None of the above"
+      ],
+      "correctAnswer": "far less than one"
+    },
+    {
+      "id": 8,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "In a hash table, ________ builds a linked list of all items whose keys hash to the same value.",
+      "options": [
+        "Chaining",
+        "Open Addressing",
+        "Resolving",
+        "Probing"
+      ],
+      "correctAnswer": "Chaining"
+    },
+    {
+      "id": 9,
+      "type": "trueFalse",
+      "section": "Question 1",
+      "question": "The STL class that implements the linked list is \"vector\".",
+      "correctAnswer": "False"
+    },
+    {
+      "id": 10,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "Assume that you have a hash table with size 7. The hash function implemented is h(key) = key % 7. At what index will the pair (5, Ahmed) be placed assuming that the first element is the key.",
+      "options": [
+        "2",
+        "5",
+        "7",
+        "None of the above"
+      ],
+      "correctAnswer": "5"
+    },
+    {
+      "id": 11,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "Which of the following statements is the correct syntax for adding a pair of values to a map?",
+      "options": [
+        "Map[first]=second;",
+        "Map.insert(make_pair(first,second));",
+        "Map[i]= make_pair(first,second)",
+        "Both A and B"
+      ],
+      "correctAnswer": "Both A and B"
+    },
+    {
+      "id": 12,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "In a circular array implementation of a queue, and \"last\" is the index of the last element in the array, what is the formula for the index after last?",
+      "options": [
+        "(last % 1) + size",
+        "last % (1 + size)",
+        "(last + 1) % size",
+        "last + (1 % size)"
+      ],
+      "correctAnswer": "(last + 1) % size"
+    },
+    {
+      "id": 13,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "Which of the following data structures is a linear data structure?",
+      "options": [
+        "Trees",
+        "Graphs",
+        "Arrays",
+        "None of above"
+      ],
+      "correctAnswer": "Arrays"
+    },
+    {
+      "id": 14,
+      "type": "trueFalse",
+      "section": "Question 1",
+      "question": "The order in which nodes are visited in preorder traversal in a binary tree is exactly the reverse of the order in which nodes are visited in postorder.",
+      "correctAnswer": "False"
+    },
+    {
+      "id": 15,
+      "type": "mcq",
+      "section": "Question 1",
+      "question": "Which of the following functions are performed by a constructor?",
+      "options": [
+        "Construct a new class",
+        "Construct a new object",
+        "Construct a new function",
+        "Initialize objects"
+      ],
+      "correctAnswer": "Initialize objects"
+    },
+    {
+      "id": 16,
+      "type": "drawDiagram",
+      "section": "Question 2 - 1",
+      "diagramType": "linkedList",
+      "question": "[4 marks] Starting with an empty linked list, show the contents of the list after performing the following sequence of operations: Append(6), Append(8), Append(10), InsertAt(0,9), Append(11), DeleteAt(1). Show the position of the head and tail pointers.",
+      "code": "Append(6)\nAppend(8)\nAppend(10)\nInsertAt(0,9)\nAppend(11)\nDeleteAt(1)",
+      "answer": "Head -> 9 -> 8 -> 10 -> 11 -> NULL\nTail = 11",
+      "answerImage": "/answers/2021.2/q16-linked-list.svg",
+      "selfReview": true
+    },
+    {
+      "id": 17,
+      "type": "drawDiagram",
+      "section": "Question 2 - 2A",
+      "diagramType": "bst",
+      "question": "[6 marks] Given the following set of values: 10, 4, 16, 9, 2, 14, 1, 3\na. Show the contents of a binary search tree after inserting the given values in the same order.",
+      "initialNodes": [
+        "10",
+        "4",
+        "16",
+        "9",
+        "2",
+        "14",
+        "1",
+        "3"
+      ],
+      "answer": "          10\n        /    \\\n       4      16\n      / \\    /\n     2   9  14\n    / \\\n   1   3",
+      "answerImage": "/answers/2021.2/q17-bst.svg",
+      "selfReview": true
+    },
+    {
+      "id": 18,
+      "type": "fillBlank",
+      "section": "Question 2 - 2B",
+      "question": "b. Write the sequence of values resulting from the pre-order traversal of the tree in (a)",
+      "template": "___",
+      "correctAnswers": [
+        "10, 4, 2, 1, 3, 9, 16, 14"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "compoundQuestion",
+      "section": "Question 3",
+      "question": "Write the C++ code for the linked list class, include the node class and add the appropriate constructors to both classes. Add implementation of the following functions:\ninsertAt(pos, val) which adds a value val at position pos in a linked list. Make sure you handle insertion at all positions including beginning and end.",
+      "modelAnswer": "template <typename T>\nclass Node {\npublic:\n    T value;\n    Node<T>* next;\n\n    Node(T val) {\n        value = val;\n        next = nullptr;\n    }\n};\n\ntemplate <typename T>\nclass LinkedList {\nprivate:\n    Node<T>* head;\n    int count;\n\npublic:\n    LinkedList() {\n        head = nullptr;\n        count = 0;\n    }\n\n    void insertAt(int pos, T val) {\n        if (pos < 0 || pos > count) {\n            return;\n        }\n\n        Node<T>* newNode = new Node<T>(val);\n\n        if (pos == 0) {\n            newNode->next = head;\n            head = newNode;\n            count++;\n            return;\n        }\n\n        Node<T>* current = head;\n        for (int i = 0; i < pos - 1; i++) {\n            current = current->next;\n        }\n\n        newNode->next = current->next;\n        current->next = newNode;\n        count++;\n    }\n};",
+      "subQuestions": [
+        {
+          "label": "insertAt",
+          "prompt": "insertAt(pos, val) which adds a value val at position pos in a linked list. Make sure you handle insertion at all positions including beginning and end."
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "type": "compoundQuestion",
+      "section": "Question 4",
+      "question": "1. [7 marks] Write the C++ code for the function max() which returns the maximum value in a Binary search tree. Write only the code of the function assuming that you already have the definition of the Binary search tree class with all its functions.\n\n2. [8 marks] Write the C++ code for the function average(q), which takes a queue as a parameter and returns the average of all values in the queue. Use only queue functions and do not use any data structure other than the queue. You can use the queue's STL class.",
+      "modelAnswer": "int max() const {\n    if (root == nullptr) {\n        throw std::runtime_error(\"Tree is empty\");\n    }\n\n    Node* current = root;\n    while (current->right != nullptr) {\n        current = current->right;\n    }\n\n    return current->value;\n}\n\ndouble average(std::queue<int> q) {\n    if (q.empty()) {\n        return 0;\n    }\n\n    int sum = 0;\n    int n = q.size();\n\n    for (int i = 0; i < n; i++) {\n        int x = q.front();\n        q.pop();\n        sum += x;\n        q.push(x);\n    }\n\n    return (double)sum / n;\n}",
+      "subQuestions": [
+        {
+          "label": "1",
+          "prompt": "Write the C++ code for the function max() which returns the maximum value in a Binary search tree."
+        },
+        {
+          "label": "2",
+          "prompt": "Write the C++ code for the function average(q), which takes a queue as a parameter and returns the average of all values in the queue."
+        }
+      ]
+    }
+  ]
+}
