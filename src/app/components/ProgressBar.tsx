@@ -1,5 +1,3 @@
-import { motion } from "motion/react";
-
 interface ProgressBarProps {
   value: number;
   max: number;
@@ -37,11 +35,9 @@ export function ProgressBar({
         </div>
       )}
       <div className="h-3 bg-muted rounded-full overflow-hidden border border-border">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${percentage}%` }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+        <div
           className={`h-full ${colors[color]}`}
+          style={{ width: `${percentage}%` }}
         />
       </div>
     </div>

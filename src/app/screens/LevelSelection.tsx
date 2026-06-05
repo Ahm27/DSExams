@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 import { LevelCard } from "../components/LevelCard";
 import { ParticleBackground } from "../components/ParticleBackground";
@@ -22,11 +21,7 @@ export function LevelSelection({ onBack, onSelectLevel, levels }: LevelSelection
       <ParticleBackground />
 
       <div className="relative z-10 container mx-auto px-4 py-8 max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <button
             onClick={onBack}
             className="flex items-center gap-2 text-muted-foreground hover:text-[var(--neon-cyan)] transition-colors mb-6"
@@ -41,20 +36,12 @@ export function LevelSelection({ onBack, onSelectLevel, levels }: LevelSelection
           <p className="font-mono text-muted-foreground">
             {'>'} SELECT TARGET ARCHIVE TO INFILTRATE
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {levels.map((level, index) => (
-            <motion.div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {levels.map((level) => (
+            <div
               key={level.year}
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
             >
               <LevelCard
                 year={level.year}
@@ -63,14 +50,11 @@ export function LevelSelection({ onBack, onSelectLevel, levels }: LevelSelection
                 difficulty={level.difficulty}
                 onClick={() => !level.isLocked && onSelectLevel(level.year)}
               />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
+        <div
           className="mt-12 p-6 border-2 border-[var(--neon-purple)] rounded-lg backdrop-blur-md"
           style={{ background: "rgba(15, 22, 41, 0.7)" }}
         >
@@ -83,7 +67,7 @@ export function LevelSelection({ onBack, onSelectLevel, levels }: LevelSelection
             <p>{'>'} XP and achievements are awarded for accuracy and speed</p>
             <p>{'>'} System health decreases with incorrect answers</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

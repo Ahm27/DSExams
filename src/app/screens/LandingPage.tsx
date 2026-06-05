@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { CalendarDays, FolderOpen } from "lucide-react";
 import { CyberButton } from "../components/CyberButton";
@@ -13,37 +12,48 @@ interface LandingPageProps {
 export function LandingPage({ onStart }: LandingPageProps) {
   const { enabled, startLoop, stopSound, unlock } = useAudioManager();
   const [creditGlitch, setCreditGlitch] = useState(false);
+  const [homeAudioStarted, setHomeAudioStarted] = useState(false);
 
   useEffect(() => {
-    unlock();
     return () => {
       stopSound("home");
     };
-  }, [stopSound, unlock]);
+  }, [stopSound]);
 
   useEffect(() => {
-    if (enabled) {
+    if (enabled && homeAudioStarted) {
       startLoop("home");
     } else {
       stopSound("home");
     }
-  }, [enabled]);
+  }, [enabled, homeAudioStarted, startLoop, stopSound]);
 
   useEffect(() => {
+    let timeout: number | undefined;
     const interval = window.setInterval(() => {
       setCreditGlitch(true);
-      window.setTimeout(() => setCreditGlitch(false), 160);
+      timeout = window.setTimeout(() => setCreditGlitch(false), 160);
     }, 12000);
 
-    return () => window.clearInterval(interval);
+    return () => {
+      window.clearInterval(interval);
+      if (timeout) {
+        window.clearTimeout(timeout);
+      }
+    };
   }, []);
+
+  const handleUserGesture = () => {
+    unlock();
+    setHomeAudioStarted(true);
+  };
 
   return (
     <div
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      onPointerDownCapture={unlock}
-      onKeyDownCapture={unlock}
-      onTouchStartCapture={unlock}
+      onPointerDownCapture={handleUserGesture}
+      onKeyDownCapture={handleUserGesture}
+      onTouchStartCapture={handleUserGesture}
     >
       <ParticleBackground />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(0,189,255,0.18),transparent_18%),radial-gradient(circle_at_50%_42%,rgba(168,85,247,0.15),transparent_28%),linear-gradient(180deg,rgba(5,8,18,0.72),rgba(5,8,18,0.35)_38%,rgba(3,5,12,0.92))]" />
@@ -59,21 +69,11 @@ export function LandingPage({ onStart }: LandingPageProps) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_31%,transparent_0,transparent_16%,rgba(0,170,255,0.14)_16.4%,transparent_17.1%,transparent_23%,rgba(168,85,247,0.08)_23.5%,transparent_24.3%,transparent_100%)] opacity-90" />
 
       <div className="relative z-10 w-full max-w-6xl px-4 pb-14 pt-24 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-4"
-        >
+        <div className="mb-4">
           <GlitchText text="DS.EXE" className="text-6xl sm:text-7xl md:text-8xl text-[var(--neon-cyan)]" />
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="mx-auto max-w-3xl"
-        >
+        <div className="mx-auto max-w-3xl">
           <div className="font-mono text-xl text-cyan-100 tracking-[0.35em] uppercase">
             DATA STRUCTURES EXAM TRAINER
           </div>
@@ -100,14 +100,9 @@ export function LandingPage({ onStart }: LandingPageProps) {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="pt-10 space-y-6"
-        >
+        <div className="pt-10 space-y-6">
           <CyberButton
             className="min-w-[320px] px-10 py-5 text-2xl shadow-[0_0_28px_rgba(0,255,255,0.55),0_0_0_4px_rgba(168,85,247,0.35)] border-2 border-[var(--neon-cyan)] rounded-[1.4rem] bg-[linear-gradient(180deg,#43f3ff,#0fe3ff)]"
             onClick={onStart}
@@ -121,35 +116,16 @@ export function LandingPage({ onStart }: LandingPageProps) {
               {enabled ? "ENABLED" : "MUTED"}
             </span>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          className="pt-16"
-        >
+        <div className="pt-16">
           <div className="mx-auto mt-6 inline-flex flex-col rounded-t-[1.3rem] border border-[var(--neon-purple)]/45 bg-black/35 px-10 py-4 font-mono text-sm tracking-[0.22em] text-[var(--neon-purple)] uppercase">
             <div className="relative">
-              <motion.span
+              <span
                 className="relative z-10 block"
-                animate={
-                  creditGlitch
-                    ? {
-                        x: [0, -1, 1, 0],
-                        textShadow: [
-                          "0 0 0 transparent",
-                          "1px 0 #00ffff, -1px 0 #ff00ff",
-                          "-1px 0 #00ffff, 1px 0 #ff00ff",
-                          "0 0 0 transparent",
-                        ],
-                      }
-                    : {}
-                }
-                transition={{ duration: 0.16 }}
               >
                 Made By Project Zero
-              </motion.span>
+              </span>
               {creditGlitch && (
                 <>
                   <span
@@ -168,25 +144,11 @@ export function LandingPage({ onStart }: LandingPageProps) {
               )}
             </div>
             <div className="relative mt-2">
-              <motion.span
+              <span
                 className="relative z-10 block"
-                animate={
-                  creditGlitch
-                    ? {
-                        x: [0, 1, -1, 0],
-                        textShadow: [
-                          "0 0 0 transparent",
-                          "1px 0 #00ffff, -1px 0 #ff00ff",
-                          "-1px 0 #00ffff, 1px 0 #ff00ff",
-                          "0 0 0 transparent",
-                        ],
-                      }
-                    : {}
-                }
-                transition={{ duration: 0.16 }}
               >
                 President: Ahmed Amr
-              </motion.span>
+              </span>
               {creditGlitch && (
                 <>
                   <span
@@ -205,7 +167,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
               )}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--neon-cyan)] to-transparent" />

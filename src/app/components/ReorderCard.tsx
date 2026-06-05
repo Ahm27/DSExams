@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { GripVertical, ArrowUp, ArrowDown } from "lucide-react";
 
 interface ReorderCardProps {
@@ -22,13 +21,7 @@ export function ReorderCard({
   showValidation = false,
 }: ReorderCardProps) {
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className={`relative group`}
-    >
+    <div className="relative group">
       <div
         className={`flex items-center gap-4 p-4 rounded-lg border-2 backdrop-blur-md
           transition-all duration-300
@@ -86,11 +79,7 @@ export function ReorderCard({
         </div>
 
         {showValidation && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="absolute -right-3 -top-3"
-          >
+          <div className="absolute -right-3 -top-3">
             <div
               className={`px-3 py-1 rounded-full font-mono text-xs uppercase
                 ${
@@ -107,20 +96,13 @@ export function ReorderCard({
             >
               {isCorrect ? "✓" : "✗"}
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
 
       {showValidation && !isCorrect && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: [0.3, 0.6, 0.3],
-          }}
-          transition={{ duration: 1, repeat: Infinity }}
-          className="absolute inset-0 rounded-lg border-2 border-[var(--neon-red)] pointer-events-none"
-        />
+        <div className="cyber-pulse absolute inset-0 rounded-lg border-2 border-[var(--neon-red)] pointer-events-none" />
       )}
-    </motion.div>
+    </div>
   );
 }

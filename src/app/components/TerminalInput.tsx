@@ -1,5 +1,4 @@
-import { motion } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 interface TerminalInputProps {
   value: string;
@@ -18,16 +17,7 @@ export function TerminalInput({
   showValidation = false,
   prefix = "$",
 }: TerminalInputProps) {
-  const [showCursor, setShowCursor] = useState(true);
   const [isFocused, setIsFocused] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 530);
-
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="space-y-2">
@@ -72,11 +62,9 @@ export function TerminalInput({
           }}
         />
 
-        {isFocused && showCursor && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="w-2 h-5 bg-[var(--neon-cyan)]"
+        {isFocused && (
+          <div
+            className="cyber-caret w-2 h-5 bg-[var(--neon-cyan)]"
             style={{
               boxShadow: "0 0 10px rgba(0, 255, 255, 0.8)",
             }}
@@ -84,9 +72,7 @@ export function TerminalInput({
         )}
 
         {showValidation && (
-          <motion.div
-            initial={{ scale: 0, x: 10 }}
-            animate={{ scale: 1, x: 0 }}
+          <div
             className={`px-3 py-1 rounded text-xs uppercase
               ${
                 isCorrect
@@ -101,18 +87,16 @@ export function TerminalInput({
             }}
           >
             {isCorrect ? "INPUT ACCEPTED" : "INVALID COMMAND"}
-          </motion.div>
+          </div>
         )}
       </div>
 
       {showValidation && !isCorrect && (
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <p
           className="font-mono text-xs text-[var(--neon-red)] pl-4"
         >
           {'>'} ERROR: COMMAND NOT RECOGNIZED
-        </motion.p>
+        </p>
       )}
     </div>
   );

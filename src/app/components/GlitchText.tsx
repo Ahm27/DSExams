@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 interface GlitchTextProps {
@@ -10,35 +9,27 @@ export function GlitchText({ text, className = "" }: GlitchTextProps) {
   const [glitching, setGlitching] = useState(false);
 
   useEffect(() => {
+    let timeout: number | undefined;
     const interval = setInterval(() => {
       setGlitching(true);
-      setTimeout(() => setGlitching(false), 100);
+      timeout = window.setTimeout(() => setGlitching(false), 100);
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      if (timeout) {
+        window.clearTimeout(timeout);
+      }
+    };
   }, []);
 
   return (
     <div className={`relative inline-block ${className}`}>
-      <motion.h1
+      <h1
         className="font-orbitron relative z-10"
-        animate={
-          glitching
-            ? {
-                x: [0, -2, 2, -2, 0],
-                textShadow: [
-                  "0 0 0 transparent",
-                  "2px 0 #00ffff, -2px 0 #ff00ff",
-                  "-2px 0 #00ffff, 2px 0 #ff00ff",
-                  "0 0 0 transparent",
-                ],
-              }
-            : {}
-        }
-        transition={{ duration: 0.3 }}
       >
         {text}
-      </motion.h1>
+      </h1>
       {glitching && (
         <>
           <span

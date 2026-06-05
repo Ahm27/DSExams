@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Lock, CheckCircle2 } from "lucide-react";
 
 interface LevelCardProps {
@@ -23,8 +22,7 @@ export function LevelCard({
   };
 
   return (
-    <motion.div
-      whileHover={!isLocked ? { scale: 1.05, y: -10 } : {}}
+    <div
       onClick={!isLocked ? onClick : undefined}
       className={`
         relative p-6 rounded-lg border-2 backdrop-blur-md
@@ -80,16 +78,14 @@ export function LevelCard({
               </span>
             </div>
             <div className="h-2 bg-muted rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.5 }}
+              <div
                 className="h-full bg-[var(--neon-cyan)] shadow-[0_0_10px_rgba(0,255,255,0.8)]"
+                style={{ width: `${progress}%` }}
               />
             </div>
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }

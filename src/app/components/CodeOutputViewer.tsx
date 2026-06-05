@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Play, Terminal } from "lucide-react";
 
 interface CodeOutputViewerProps {
@@ -61,9 +60,7 @@ export function CodeOutputViewer({
       </div>
 
       {output !== undefined && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="rounded-lg border-2 border-[var(--neon-cyan)] overflow-hidden"
           style={{ background: "rgba(5, 8, 18, 0.9)" }}
         >
@@ -79,7 +76,7 @@ export function CodeOutputViewer({
               {output}
             </pre>
           </div>
-        </motion.div>
+        </div>
       )}
     </div>
   );

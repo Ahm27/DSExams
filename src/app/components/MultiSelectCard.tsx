@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { CheckSquare, Square } from "lucide-react";
 
 interface MultiSelectCardProps {
@@ -20,9 +19,7 @@ export function MultiSelectCard({
   disabled = false,
 }: MultiSelectCardProps) {
   return (
-    <motion.button
-      whileHover={!disabled ? { scale: 1.02, x: 5 } : {}}
-      whileTap={!disabled ? { scale: 0.98 } : {}}
+    <button
       onClick={!disabled ? onToggle : undefined}
       disabled={disabled}
       className={`w-full p-4 rounded-lg border-2 text-left transition-all duration-300
@@ -48,16 +45,7 @@ export function MultiSelectCard({
           : "rgba(15, 22, 41, 0.7)",
       }}
     >
-      <motion.div
-        animate={
-          isSelected
-            ? {
-                scale: [1, 1.1, 1],
-              }
-            : {}
-        }
-        transition={{ duration: 0.3 }}
-      >
+      <div>
         {isSelected ? (
           <CheckSquare
             className={`w-6 h-6 ${
@@ -71,14 +59,12 @@ export function MultiSelectCard({
         ) : (
           <Square className="w-6 h-6 text-muted-foreground" />
         )}
-      </motion.div>
+      </div>
 
       <span className="text-readable flex-1 text-lg font-semibold text-foreground">{content}</span>
 
       {showValidation && (
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+        <div
           className={`px-3 py-1 rounded-full font-mono text-xs uppercase
             ${isCorrect ? "bg-[var(--neon-green)]" : "bg-[var(--neon-red)]"}
             text-white
@@ -90,8 +76,8 @@ export function MultiSelectCard({
           }}
         >
           {isCorrect ? "VALID" : "INVALID"}
-        </motion.div>
+        </div>
       )}
-    </motion.button>
+    </button>
   );
 }

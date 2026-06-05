@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { useEffect, useRef } from "react";
 import { Trophy, Target, Zap, RotateCcw, ArrowLeft } from "lucide-react";
 import { CyberButton } from "../components/CyberButton";
@@ -68,32 +67,18 @@ export function ResultScreen({
       <ParticleBackground />
 
       <div className="relative z-10 container mx-auto px-4 py-8 max-w-4xl">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
-        >
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-          >
+        <div className="text-center mb-8">
+          <div>
             <h1 className="font-orbitron text-6xl text-[var(--neon-cyan)] mb-4">
               MISSION COMPLETE
             </h1>
             <p className="font-mono text-xl text-muted-foreground">
               ARCHIVE {year} DECRYPTED
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <NeonCard glowColor={rank.color as any} className="text-center">
             <div className="mb-4">
               <Trophy className={`w-16 h-16 mx-auto text-[var(--neon-${rank.color})]`} />
@@ -103,14 +88,9 @@ export function ResultScreen({
             </h2>
             <p className="font-mono text-sm text-muted-foreground">{rank.description}</p>
           </NeonCard>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
           <NeonCard glowColor="cyan">
             <div className="text-center">
               <Target className="w-8 h-8 mx-auto mb-3 text-[var(--neon-cyan)]" />
@@ -136,14 +116,9 @@ export function ResultScreen({
               <p className="font-orbitron text-3xl text-[var(--neon-green)]">{accuracy}%</p>
             </div>
           </NeonCard>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <h3 className="font-orbitron text-2xl text-[var(--neon-cyan)] mb-4">
             ACHIEVEMENTS UNLOCKED
           </h3>
@@ -171,14 +146,9 @@ export function ResultScreen({
               />
             )}
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="flex gap-4 justify-center"
-        >
+        <div className="flex gap-4 justify-center">
           <CyberButton onClick={onReplay} variant="secondary">
             <RotateCcw className="w-5 h-5 mr-2" />
             Replay Mission
@@ -187,7 +157,7 @@ export function ResultScreen({
             <ArrowLeft className="w-5 h-5 mr-2" />
             Return to Archives
           </CyberButton>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

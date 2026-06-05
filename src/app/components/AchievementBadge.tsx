@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Trophy, Award, Star, Zap } from "lucide-react";
 
 interface AchievementBadgeProps {
@@ -24,10 +23,7 @@ export function AchievementBadge({
   const Icon = icons[icon];
 
   return (
-    <motion.div
-      initial={{ scale: 0, rotate: -180 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ type: "spring", duration: 0.6 }}
+    <div
       className={`
         p-4 rounded-lg border-2 backdrop-blur-md
         flex items-center gap-4
@@ -61,6 +57,6 @@ export function AchievementBadge({
         <h4 className="font-orbitron">{title}</h4>
         <p className="font-mono text-sm text-muted-foreground">{description}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }

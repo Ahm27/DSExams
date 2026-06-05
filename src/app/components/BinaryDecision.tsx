@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { Check, X } from "lucide-react";
 
 interface BinaryDecisionProps {
@@ -45,9 +44,7 @@ export function BinaryDecision({
       </p>
 
       <div className="grid grid-cols-2 gap-6">
-        <motion.button
-          whileHover={!disabled ? { scale: 1.05 } : {}}
-          whileTap={!disabled ? { scale: 0.95 } : {}}
+        <button
           onClick={() => !disabled && onSelect(true)}
           disabled={disabled}
           className={`relative p-8 rounded-lg border-2 backdrop-blur-md
@@ -73,16 +70,7 @@ export function BinaryDecision({
           }}
         >
           <div className="flex flex-col items-center gap-4">
-            <motion.div
-              animate={
-                selected === true
-                  ? {
-                      rotate: [0, 360],
-                      scale: [1, 1.2, 1],
-                    }
-                  : {}
-              }
-              transition={{ duration: 0.5 }}
+            <div
               className={`w-20 h-20 rounded-full border-4 flex items-center justify-center
                 ${
                   showValidation && trueState !== "default"
@@ -94,7 +82,7 @@ export function BinaryDecision({
               `}
             >
               <Check className="w-10 h-10 text-[var(--neon-green)]" />
-            </motion.div>
+            </div>
 
             <div className="text-center">
               <h3 className="font-orbitron text-2xl text-[var(--neon-green)] mb-2">
@@ -107,20 +95,11 @@ export function BinaryDecision({
           </div>
 
           {selected === true && (
-            <motion.div
-              className="absolute inset-0 rounded-lg border-2 border-[var(--neon-green)]"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.02, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+            <div className="cyber-pulse absolute inset-0 rounded-lg border-2 border-[var(--neon-green)]" />
           )}
-        </motion.button>
+        </button>
 
-        <motion.button
-          whileHover={!disabled ? { scale: 1.05 } : {}}
-          whileTap={!disabled ? { scale: 0.95 } : {}}
+        <button
           onClick={() => !disabled && onSelect(false)}
           disabled={disabled}
           className={`relative p-8 rounded-lg border-2 backdrop-blur-md
@@ -148,16 +127,7 @@ export function BinaryDecision({
           }}
         >
           <div className="flex flex-col items-center gap-4">
-            <motion.div
-              animate={
-                selected === false
-                  ? {
-                      rotate: [0, 360],
-                      scale: [1, 1.2, 1],
-                    }
-                  : {}
-              }
-              transition={{ duration: 0.5 }}
+            <div
               className={`w-20 h-20 rounded-full border-4 flex items-center justify-center
                 ${
                   showValidation && falseState !== "default"
@@ -169,7 +139,7 @@ export function BinaryDecision({
               `}
             >
               <X className="w-10 h-10 text-[var(--neon-red)]" />
-            </motion.div>
+            </div>
 
             <div className="text-center">
               <h3 className="font-orbitron text-2xl text-[var(--neon-red)] mb-2">
@@ -182,16 +152,9 @@ export function BinaryDecision({
           </div>
 
           {selected === false && (
-            <motion.div
-              className="absolute inset-0 rounded-lg border-2 border-[var(--neon-red)]"
-              animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [1, 1.02, 1],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+            <div className="cyber-pulse absolute inset-0 rounded-lg border-2 border-[var(--neon-red)]" />
           )}
-        </motion.button>
+        </button>
       </div>
     </div>
   );

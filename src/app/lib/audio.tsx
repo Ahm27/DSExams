@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 type SoundType = "home" | "correct" | "wrong" | "win" | "fail";
 
@@ -108,7 +108,7 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
   const loopAudioRef = useRef<Partial<Record<SoundType, HTMLAudioElement>>>({});
   const activeLoopsRef = useRef<Set<SoundType>>(new Set());
 
-  const getAudioContext = () => {
+  const getAudioContext = useCallback(() => {
     if (!isBrowser()) {
       return null;
     }
@@ -122,9 +122,9 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
     }
 
     return audioContextRef.current;
-  };
+  }, []);
 
-  const scheduleSound = (context: AudioContext, type: SoundType) => {
+  const scheduleSound = useCallback((context: AudioContext, type: SoundType) => {
     const now = context.currentTime;
     let offset = 0;
 
@@ -150,9 +150,9 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
 
       offset += step.duration + 0.025;
     }
-  };
+  }, [preferences.volume]);
 
-  const playAudioFile = (type: SoundType) => {
+  const playAudioFile = useCallback((type: SoundType) => {
     const audio = new Audio(SOUND_FILES[type]);
     audio.volume = preferences.enabled ? preferences.volume : 0;
     audio.currentTime = 0;
@@ -172,9 +172,9 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
 
       scheduleSound(context, type);
     });
-  };
+  }, [getAudioContext, preferences.enabled, preferences.volume, scheduleSound]);
 
-  const startLoop = (type: SoundType) => {
+  const startLoop = useCallback((type: SoundType) => {
     const source = SOUND_FILES[type];
     if (!source || !preferences.enabled || preferences.volume <= 0) {
       return;
@@ -201,9 +201,9 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
         // Ignore autoplay rejection until the next user interaction.
       });
     });
-  };
+  }, [preferences.enabled, preferences.volume]);
 
-  const stopSound = (type: SoundType) => {
+  const stopSound = useCallback((type: SoundType) => {
     const audio = loopAudioRef.current[type];
     if (!audio) {
       return;
@@ -212,9 +212,9 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
     activeLoopsRef.current.delete(type);
     audio.pause();
     audio.currentTime = 0;
-  };
+  }, []);
 
-  const unlock = () => {
+  const unlock = useCallback(() => {
     const context = getAudioContext();
     const retryLoops = () => {
       for (const type of activeLoopsRef.current) {
@@ -249,7 +249,7 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
 
     setUnlocked(true);
     retryLoops();
-  };
+  }, [getAudioContext, preferences.enabled, preferences.volume]);
 
   useEffect(() => {
     savePreferences(preferences);
@@ -283,6 +283,10 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
       return;
     }
 
+    if (unlocked) {
+      return;
+    }
+
     const handleUnlock = () => unlock();
     window.addEventListener("pointerdown", handleUnlock, { passive: true });
     window.addEventListener("keydown", handleUnlock);
@@ -291,7 +295,7 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
       window.removeEventListener("pointerdown", handleUnlock);
       window.removeEventListener("keydown", handleUnlock);
     };
-  }, []);
+  }, [unlock, unlocked]);
 
   const value = useMemo<AudioManagerValue>(
     () => ({
@@ -317,7 +321,7 @@ export function AudioManagerProvider({ children }: { children: ReactNode }) {
       stopSound,
       unlock,
     }),
-    [preferences, unlocked],
+    [playAudioFile, preferences.enabled, preferences.volume, startLoop, stopSound, unlock, unlocked],
   );
 
   return <AudioManagerContext.Provider value={value}>{children}</AudioManagerContext.Provider>;

@@ -172,12 +172,71 @@
     50% { opacity: 0.8; }
   }
 
+  @keyframes cyber-caret-blink {
+    0%, 48% { opacity: 1; }
+    49%, 100% { opacity: 0; }
+  }
+
+  @keyframes cyber-soft-blink {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes cyber-pulse {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes loading-bar {
+    0%, 100% {
+      opacity: 0.5;
+      transform: scaleY(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scaleY(1.5);
+    }
+  }
+
+  @keyframes loading-progress {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+
   .animate-glow-pulse {
     animation: glow-pulse 2s ease-in-out infinite;
   }
 
   .animate-flicker {
     animation: flicker 0.1s ease-in-out;
+  }
+
+  .cyber-caret {
+    animation: cyber-caret-blink 1.06s steps(1, end) infinite;
+  }
+
+  .cyber-soft-blink {
+    animation: cyber-soft-blink 2s ease-in-out infinite;
+  }
+
+  .cyber-pulse {
+    animation: cyber-pulse 1.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .loading-bar {
+    animation: loading-bar 1s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .loading-progress {
+    animation: loading-progress 2s linear infinite;
   }
 
   /**

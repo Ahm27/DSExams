@@ -39,10 +39,15 @@ export interface DiagramSubmitResult {
 }
 
 interface GraphWorkspaceProps {
-  diagramType?: "stack" | "queueVector" | "linkedList" | "map";
+  diagramType?: "stack" | "queueVector" | "linkedList" | "map" | "bst" | "circularQueue";
   initialNodes?: string[];
   expectedZones?: DiagramZone[];
   expectedConnections?: DiagramConnection[];
+  expectedCircularQueueState?: {
+    front: number;
+    back: number;
+    slots: number;
+  };
   onSubmit?: (result: DiagramSubmitResult) => void;
 }
 

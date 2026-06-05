@@ -1,6 +1,5 @@
-import { motion } from "motion/react";
 import { GripVertical, Trash2 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 interface DraggableNodeProps {
   id: string;
@@ -34,28 +33,88 @@ export function DraggableNode({
   onClick,
 }: DraggableNodeProps) {
   const [isDragging, setIsDragging] = useState(false);
+  const [dragPosition, setDragPosition] = useState({ x, y });
+  const dragStartRef = useRef({ pointerX: 0, pointerY: 0, x: 0, y: 0 });
+  const currentPositionRef = useRef({ x, y });
+  const movedRef = useRef(false);
   const [mapKey, mapValue] = label.split(":");
+  const displayPosition = isDragging ? dragPosition : { x, y };
+
+  useEffect(() => {
+    if (!isDragging) {
+      setDragPosition({ x, y });
+      currentPositionRef.current = { x, y };
+    }
+  }, [isDragging, x, y]);
+
+  const clampPosition = (nextX: number, nextY: number) => ({
+    x: Math.min(Math.max(nextX, dragBounds.left), dragBounds.right),
+    y: Math.min(Math.max(nextY, dragBounds.top), dragBounds.bottom),
+  });
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if ((event.target as HTMLElement).closest("button")) {
+      return;
+    }
+
+    event.currentTarget.setPointerCapture(event.pointerId);
+    movedRef.current = false;
+    dragStartRef.current = {
+      pointerX: event.clientX,
+      pointerY: event.clientY,
+      x,
+      y,
+    };
+    currentPositionRef.current = { x, y };
+    setDragPosition({ x, y });
+    setIsDragging(true);
+  };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) {
+      return;
+    }
+
+    const deltaX = event.clientX - dragStartRef.current.pointerX;
+    const deltaY = event.clientY - dragStartRef.current.pointerY;
+    if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) {
+      movedRef.current = true;
+    }
+
+    const nextPosition = clampPosition(
+      dragStartRef.current.x + deltaX,
+      dragStartRef.current.y + deltaY,
+    );
+    currentPositionRef.current = nextPosition;
+    setDragPosition(nextPosition);
+  };
+
+  const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
+    if (!isDragging) {
+      return;
+    }
+
+    event.currentTarget.releasePointerCapture(event.pointerId);
+    setIsDragging(false);
+    onMove?.(id, currentPositionRef.current.x, currentPositionRef.current.y);
+  };
 
   return (
-    <motion.div
-      drag
-      dragConstraints={dragBounds}
-      onDragStart={() => setIsDragging(true)}
-      onDragEnd={(_, info) => {
-        setIsDragging(false);
-        onMove?.(id, x + info.offset.x, y + info.offset.y);
-      }}
-      onClick={() => onClick?.(id)}
-      initial={{ x, y }}
-      animate={{
-        x,
-        y,
-        scale: isDragging ? 1.1 : 1,
+    <div
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onClick={() => {
+        if (!movedRef.current) {
+          onClick?.(id);
+        }
       }}
       className={`absolute cursor-move group`}
       style={{
         width,
         height,
+        transform: `translate(${displayPosition.x}px, ${displayPosition.y}px) scale(${isDragging ? 1.05 : 1})`,
+        touchAction: "none",
       }}
     >
       <div
@@ -129,22 +188,10 @@ export function DraggableNode({
           </button>
         )}
 
-        <motion.div
-          className="absolute inset-0 rounded-lg border-2 border-[var(--neon-cyan)] opacity-0"
-          animate={
-            isSelected
-              ? {
-                  opacity: [0, 0.5, 0],
-                  scale: [1, 1.1, 1],
-                }
-              : {}
-          }
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-          }}
-        />
+        {isSelected && (
+          <div className="cyber-pulse absolute inset-0 rounded-lg border-2 border-[var(--neon-cyan)]" />
+        )}
       </div>
-    </motion.div>
+    </div>
   );
 }

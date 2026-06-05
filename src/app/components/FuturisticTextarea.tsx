@@ -1,6 +1,4 @@
-import { motion } from "motion/react";
-import { Save } from "lucide-react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 interface FuturisticTextareaProps {
   value: string;
@@ -15,17 +13,8 @@ export function FuturisticTextarea({
   placeholder = "Enter your analysis...",
   maxLength,
 }: FuturisticTextareaProps) {
-  const [showCursor, setShowCursor] = useState(true);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowCursor((prev) => !prev);
-    }, 530);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const wordCount = value.trim().split(/\s+/).filter(Boolean).length;
   const charCount = value.length;
@@ -72,11 +61,9 @@ export function FuturisticTextarea({
           }}
         />
 
-        {isFocused && showCursor && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute bottom-4 left-6 w-2 h-4 bg-[var(--neon-cyan)]"
+        {isFocused && (
+          <div
+            className="cyber-caret absolute bottom-4 left-6 w-2 h-4 bg-[var(--neon-cyan)]"
             style={{
               boxShadow: "0 0 10px rgba(0, 255, 255, 0.8)",
             }}
@@ -90,14 +77,10 @@ export function FuturisticTextarea({
         <span className="font-mono text-xs text-muted-foreground">
           {'>'} TERMINAL MODE: ACTIVE
         </span>
-        <motion.div
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex items-center gap-2 text-[var(--neon-green)] font-mono text-xs"
-        >
+        <div className="cyber-soft-blink flex items-center gap-2 text-[var(--neon-green)] font-mono text-xs">
           <div className="w-2 h-2 rounded-full bg-[var(--neon-green)]" />
           LOGGING ENABLED
-        </motion.div>
+        </div>
       </div>
     </div>
   );

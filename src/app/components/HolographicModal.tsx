@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from "motion/react";
 import { X, ZoomIn, ZoomOut, Copy, Check } from "lucide-react";
 import { useState } from "react";
 
@@ -36,25 +35,18 @@ export function HolographicModal({
     }
   };
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
-          />
+  if (!isOpen) {
+    return null;
+  }
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, rotateX: -15 }}
-            animate={{ opacity: 1, scale: 1, rotateX: 0 }}
-            exit={{ opacity: 0, scale: 0.8, rotateX: 15 }}
-            transition={{ type: "spring", duration: 0.5 }}
-            className="fixed inset-8 md:inset-16 z-50 flex items-center justify-center"
-          >
+  return (
+    <>
+      <div
+        onClick={onClose}
+        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+      />
+
+      <div className="fixed inset-8 md:inset-16 z-50 flex items-center justify-center">
             <div
               className="w-full h-full max-w-5xl relative rounded-lg border-2 border-[var(--neon-cyan)] overflow-hidden"
               style={{
@@ -62,12 +54,8 @@ export function HolographicModal({
                 boxShadow: "0 0 60px rgba(0, 255, 255, 0.6), inset 0 0 40px rgba(0, 255, 255, 0.1)",
               }}
             >
-              <motion.div
+              <div
                 className="absolute inset-0 opacity-20 pointer-events-none"
-                animate={{
-                  backgroundPosition: ["0% 0%", "100% 100%"],
-                }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 style={{
                   backgroundImage:
                     "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 255, 255, 0.1) 2px, rgba(0, 255, 255, 0.1) 4px)",
@@ -77,13 +65,9 @@ export function HolographicModal({
               <div className="relative h-full flex flex-col">
                 <div className="flex items-center justify-between p-6 border-b-2 border-[var(--neon-cyan)]/30">
                   <div>
-                    <motion.span
-                      className="font-mono text-xs text-[var(--neon-cyan)] uppercase tracking-wider"
-                      animate={{ opacity: [0.7, 1, 0.7] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
+                    <span className="cyber-soft-blink font-mono text-xs text-[var(--neon-cyan)] uppercase tracking-wider">
                       {'>'} DECRYPTED ARCHIVE VISUAL
-                    </motion.span>
+                    </span>
                     <h2 className="font-orbitron text-2xl text-[var(--neon-cyan)] mt-1">
                       {title}
                     </h2>
@@ -134,10 +118,7 @@ export function HolographicModal({
                 </div>
 
                 <div className="flex-1 overflow-auto p-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
+                  <div
                     style={
                       type === "image" || type === "diagram"
                         ? { transform: `scale(${zoom})`, transformOrigin: "center" }
@@ -168,7 +149,7 @@ export function HolographicModal({
                         {content}
                       </div>
                     )}
-                  </motion.div>
+                  </div>
                 </div>
 
                 <div className="p-4 border-t-2 border-[var(--neon-cyan)]/30 bg-[var(--cyber-darker)]/50">
@@ -178,9 +159,7 @@ export function HolographicModal({
                 </div>
               </div>
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+      </div>
+    </>
   );
 }
